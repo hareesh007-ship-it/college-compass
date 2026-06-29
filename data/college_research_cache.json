@@ -1,0 +1,2089 @@
+{
+  "schema_version": 1,
+  "colleges": {
+    "University of Minnesota-Twin Cities": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 68,
+        "undergrad_business": 19,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Carlson #19 undergrad business (US News 2026), #6 public. National rank ~66-70 but not confirmed."
+      },
+      "tuition": {
+        "in_state": 17214,
+        "out_of_state": 38362,
+        "year": "2024-25",
+        "source_url": "https://nces.ed.gov/collegenavigator/?id=174066"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8,
+          "display": "80%",
+          "label": "University-wide",
+          "source_url": "https://nces.ed.gov/collegenavigator/?id=174066",
+          "source_note": "NCES Fall 2024"
+        },
+        "business_program": {
+          "value": 0.45,
+          "display": "~45%",
+          "label": "Carlson direct admit (estimated)",
+          "source_url": "https://carlsonschool.umn.edu/undergraduate/admissions",
+          "source_note": "Carlson does not publish a separate rate. ~45% estimated — meaningfully more selective than 80% university-wide. Carlson freshman profile: ACT 28-32, GPA 3.7-4.0."
+        }
+      },
+      "deadlines": {
+        "early_action": "Nov 1",
+        "early_decision": null,
+        "regular": "Jan 1",
+        "ed_available": false
+      },
+      "business_program_note": "Carlson School of Management — apply direct via UMN application. #19 undergrad business (US News 2026), #6 public.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 174066
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 1300,
+        "sat_mid50_high": 1500,
+        "act_mid50_low": 26,
+        "act_mid50_high": 31,
+        "source": "NCES IPEDS Fall 2024"
+      },
+      "admit_profile": {
+        "display_mode": "mid50_partial",
+        "program_admit_notes": "Carlson School of Management — direct admit via UMN application. More selective than university-wide rate. ACT 28-32, GPA 3.7-4.0 typical Carlson freshman profile. Test-optional through Fall 2027."
+      }
+    },
+    "University of St Thomas": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 158,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News national #158 (confirmed). Opus #64 undergrad business per Poets & Quants. Princeton Review #11 entrepreneurship (not US News)."
+      },
+      "tuition": {
+        "in_state": 54398,
+        "out_of_state": 54398,
+        "year": "2024-25",
+        "source_url": "https://nces.ed.gov/collegenavigator/?id=174914"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.849,
+          "display": "85%",
+          "label": "University-wide",
+          "source_url": "https://nces.ed.gov/collegenavigator/?id=174914",
+          "source_note": "NCES Fall 2024"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Opus College of Business",
+          "source_url": "https://business.stthomas.edu/",
+          "source_note": "No separate admission process — business students admitted through general admissions"
+        }
+      },
+      "deadlines": {
+        "early_action": "Nov 1",
+        "early_decision": null,
+        "regular": "Jan 15",
+        "ed_available": false
+      },
+      "business_program_note": "Opus College of Business (Schulze School of Entrepreneurship) — AACSB accredited. No separate admission. #64 undergrad business per Poets & Quants; Princeton Review #11 entrepreneurship.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 137476
+      },
+      "admit_stats": {
+        "gpa_mid50_low": 3.3,
+        "gpa_mid50_high": 3.9,
+        "sat_mid50_low": 1130,
+        "sat_mid50_high": 1340,
+        "act_mid50_low": 23,
+        "act_mid50_high": 29,
+        "source": "Official stthomas.edu admissions page + NCES IPEDS Fall 2024"
+      }
+    },
+    "University of Wisconsin-Milwaukee": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 301,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 10916,
+        "out_of_state": 23516,
+        "year": "2025-26",
+        "source_url": "https://uwm.edu/finances/finances/estimating-your-costs/tuition/tuition-fees-fall-2025/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.97,
+          "display": "97%",
+          "label": "University-wide",
+          "source_url": "https://www.collegedata.com/college/University-of-Wisconsin-Milwaukee",
+          "source_note": "CollegeData: 97% of 15,059 applicants. Rolling open admissions."
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Lubar College of Business",
+          "source_url": null,
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Sheldon B. Lubar College of Business. No separate admission. Rolling admissions. MN-WI reciprocity tuition for MN residents.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 240453,
+        "source_urls": [
+          "https://www.usnews.com/best-colleges/uw-milwaukee-3896/overall-rankings"
+        ]
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": null,
+        "sat_mid50_high": null,
+        "act_mid50_low": null,
+        "act_mid50_high": null,
+        "source": "UWM does not publish mid-50% ranges. Avg GPA 3.07, avg ACT 22 (CollegeData)."
+      }
+    },
+    "University of Wisconsin-Whitewater": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 31,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 9047,
+        "out_of_state": 19147,
+        "year": "2025-26",
+        "source_url": "https://www.uww.edu/admissions/cost"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.94,
+          "display": "94%",
+          "label": "University-wide",
+          "source_url": "https://www.collegedata.com/college/University-of-Wisconsin-Whitewater",
+          "source_note": "CollegeData: 94% of 9,321 applicants"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "College of Business and Economics (COBE)",
+          "source_url": null,
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "College of Business and Economics (COBE) — AACSB accredited (top 1%), Wisconsin largest business school, 5,028 students, 15 majors. No separate admission. MN-WI reciprocity tuition for MN residents.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 240189,
+        "source_urls": [
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-whitewater-3926/overall-rankings"
+        ]
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 940,
+        "sat_mid50_high": 1170,
+        "act_mid50_low": 18,
+        "act_mid50_high": 24,
+        "source": "CollegeData estimate (official UWW does not publish mid-50%)"
+      }
+    },
+    "University of Wisconsin-La Crosse": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 14,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 11195,
+        "out_of_state": 21312,
+        "year": "2025-26",
+        "source_url": "https://www.uwlax.edu/link/962fb257e7b84e7f884c9599df23a411.aspx"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8,
+          "display": "80%",
+          "label": "University-wide",
+          "source_url": "https://www.uwlax.edu/link/962fb257e7b84e7f884c9599df23a411.aspx",
+          "source_note": "Official CDS 2025-26: 6495 applied, 5194 admitted"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "College of Business Administration",
+          "source_url": null,
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "College of Business Administration (CBA) — Wittich Hall. No separate freshman admission. Rolling admissions, Feb 1 priority. MN-WI reciprocity tuition for MN residents.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 240329,
+        "source_urls": [
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-la-crosse-3919/overall-rankings"
+        ]
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 1230,
+        "sat_mid50_high": 1318,
+        "act_mid50_low": 22,
+        "act_mid50_high": 27,
+        "source": "Official CDS 2025-26"
+      }
+    },
+    "University of Wisconsin-Eau Claire": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 25,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 10207,
+        "out_of_state": 20273,
+        "year": "2025-26",
+        "source_url": "https://www.uwec.edu/tuition-aid/tuition-fees"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.878,
+          "display": "87.8%",
+          "label": "University-wide",
+          "source_url": "https://www.collegedata.com/college/University-of-Wisconsin-Eau-Claire",
+          "source_note": "College Board 87.99%"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Business program",
+          "source_url": null,
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "College of Business — AACSB accredited. MN-WI reciprocity tuition for MN residents.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 240268,
+        "source_urls": [
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-eau-claire-3917/overall-rankings"
+        ]
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 1100,
+        "sat_mid50_high": 1320,
+        "act_mid50_low": 21,
+        "act_mid50_high": 26,
+        "source": "CollegeSimply/appily IPEDS"
+      }
+    },
+    "University of Wisconsin-Oshkosh": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 352,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 8530,
+        "out_of_state": 16444,
+        "year": "2024-25",
+        "source_url": "https://uwosh.edu/admissions/costs-and-aid/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.87,
+          "display": "87%",
+          "label": "University-wide",
+          "source_url": "https://www.appily.com/colleges/university-of-wisconsin-oshkosh",
+          "source_note": "Appily/IPEDS"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Business program",
+          "source_url": null,
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "AACSB-accredited College of Business. 10 undergraduate majors. No separate admission. Rolling admissions.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 240365,
+        "source_urls": [
+          "https://www.usnews.com/best-colleges/university-of-wisconsinoshkosh-9630/overall-rankings"
+        ]
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": null,
+        "sat_mid50_high": null,
+        "act_mid50_low": 19,
+        "act_mid50_high": 24,
+        "source": "CollegeSimply/IPEDS"
+      }
+    },
+    "University of Wisconsin-Stout": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 30,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 11767,
+        "out_of_state": 20939,
+        "year": "2026-27",
+        "source_url": "https://www.uwstout.edu/admissions-aid/paying-college/tuition-fees-payments"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.85,
+          "display": "85%",
+          "label": "University-wide",
+          "source_url": "https://www.appily.com/colleges/university-of-wisconsin-stout",
+          "source_note": "Appily/IPEDS"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Business program",
+          "source_url": null,
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": "Sep 1",
+        "ed_available": false
+      },
+      "business_program_note": "School of Management — 10 bachelor degrees including Business Administration and Supply Chain Management. No confirmed AACSB accreditation. Rolling admissions; Dec 1 merit scholarship priority.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 240417,
+        "source_urls": [
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-stout-3915/overall-rankings"
+        ]
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": null,
+        "sat_mid50_high": null,
+        "act_mid50_low": 20,
+        "act_mid50_high": 25,
+        "source": "CollegeSimply/IPEDS"
+      }
+    },
+    "University of Wisconsin-River Falls": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 54,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 9008,
+        "out_of_state": 17470,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/university-of-wisconsin-river-falls-3923/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8172,
+          "display": "81.7%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.uwrf.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.uwrf.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via scorecard; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.uwrf.edu/",
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-river-falls-3923/overall-rankings"
+        ],
+        "scorecard_id": 240471
+      },
+      "admit_stats": {}
+    },
+    "University of Wisconsin-Parkside": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 118,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 8270,
+        "out_of_state": 17429,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/university-of-wisconsin-parkside-5015/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.7539,
+          "display": "75.4%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.uwp.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.uwp.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via scorecard; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.uwp.edu/",
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-parkside-5015/overall-rankings"
+        ],
+        "scorecard_id": 240374
+      },
+      "admit_stats": {}
+    },
+    "University of Wisconsin-Stevens Point": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 54,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 9488,
+        "out_of_state": 18508,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/uw-stevens-point-3924/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.918,
+          "display": "91.8%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.uwsp.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.uwsp.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via scorecard; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.uwsp.edu/",
+          "https://www.usnews.com/best-colleges/uw-stevens-point-3924/overall-rankings"
+        ],
+        "scorecard_id": 240480
+      },
+      "admit_stats": {}
+    },
+    "University of Wisconsin-Green Bay": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 74,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 8700,
+        "out_of_state": 17288,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/university-of-wisconsin-green-bay-3899/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8859,
+          "display": "88.6%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.uwgb.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.uwgb.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via scorecard; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.uwgb.edu/",
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-green-bay-3899/overall-rankings"
+        ],
+        "scorecard_id": 240277
+      },
+      "admit_stats": {}
+    },
+    "University of Wisconsin-Platteville": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 49,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 8644,
+        "out_of_state": 17603,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/university-of-wisconsin-platteville-3921/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8938,
+          "display": "89.4%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.uwplatt.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.uwplatt.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via scorecard; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.uwplatt.edu/",
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-platteville-3921/overall-rankings"
+        ],
+        "scorecard_id": 240462
+      },
+      "admit_stats": {}
+    },
+    "University of Wisconsin-Superior": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 135,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 8812,
+        "out_of_state": 16726,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/university-of-wisconsin-superior-3925/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.9301,
+          "display": "93.0%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.uwsuper.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.uwsuper.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via scorecard; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.uwsuper.edu/",
+          "https://www.usnews.com/best-colleges/university-of-wisconsin-superior-3925/overall-rankings"
+        ],
+        "scorecard_id": 240426
+      },
+      "admit_stats": {}
+    },
+    "University of Minnesota-Duluth": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 18,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 14610,
+        "out_of_state": 20130,
+        "year": "2024-25",
+        "source_url": "https://nces.ed.gov/collegenavigator/?id=174233"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.89,
+          "display": "89%",
+          "label": "University-wide",
+          "source_url": "https://nces.ed.gov/collegenavigator/?id=174233",
+          "source_note": "NCES Fall 2024"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Labovitz School of Business and Economics",
+          "source_url": "https://admissions.d.umn.edu",
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": "Dec 1",
+        "early_decision": null,
+        "regular": "Jan 15",
+        "ed_available": false
+      },
+      "business_program_note": "Labovitz School of Business and Economics — AACSB accredited. No separate admission. EA Dec 1 gives priority scholarship/housing consideration.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 174233,
+        "source_urls": [
+          "https://www.usnews.com/best-colleges/university-of-minnesota-duluth-2388/overall-rankings"
+        ]
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 1180,
+        "sat_mid50_high": 1350,
+        "act_mid50_low": 23,
+        "act_mid50_high": 28,
+        "source": "NCES IPEDS Fall 2024"
+      }
+    },
+    "Saint Cloud State University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Regional University Midwest (US News). Specific rank not confirmed."
+      },
+      "tuition": {
+        "in_state": 10245,
+        "out_of_state": 10245,
+        "year": "2024-25",
+        "source_url": "https://nces.ed.gov/collegenavigator/?id=174783"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.95,
+          "display": "95%",
+          "label": "University-wide",
+          "source_url": "https://nces.ed.gov/collegenavigator/?id=174783",
+          "source_note": "NCES Fall 2024"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "G.R. Herberger College of Business",
+          "source_url": "https://www.stcloudstate.edu/admissions/",
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "G.R. Herberger College of Business — AACSB accredited. No separate admission. Rolling admissions; fall closes mid-August.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28"
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 1025,
+        "sat_mid50_high": 1260,
+        "act_mid50_low": 17,
+        "act_mid50_high": 25,
+        "source": "NCES IPEDS Fall 2024"
+      }
+    },
+    "Minnesota State University-Mankato": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Regional University Midwest (US News). Specific rank not confirmed."
+      },
+      "tuition": {
+        "in_state": 9572,
+        "out_of_state": 18942,
+        "year": "2024-25",
+        "source_url": "https://nces.ed.gov/collegenavigator/?id=173920"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.88,
+          "display": "88%",
+          "label": "University-wide",
+          "source_url": "https://nces.ed.gov/collegenavigator/?id=173920",
+          "source_note": "NCES Fall 2024"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "College of Business",
+          "source_url": "https://mankato.mnsu.edu/admissions/",
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "College of Business — AACSB accredited. No separate admission. Rolling admissions.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28"
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": null,
+        "sat_mid50_high": null,
+        "act_mid50_low": 21,
+        "act_mid50_high": 25,
+        "source": "NCES IPEDS Fall 2024 — test-optional, only 6% submitted scores"
+      }
+    },
+    "Bethel University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Regional University Midwest (US News). Specific rank not confirmed."
+      },
+      "tuition": {
+        "in_state": 44226,
+        "out_of_state": 44226,
+        "year": "2024-25",
+        "source_url": "https://www.bethel.edu/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.878,
+          "display": "87.8%",
+          "label": "University-wide",
+          "source_url": "https://www.bethel.edu/",
+          "source_note": "IPEDS via collegetuitioncompare"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Business program",
+          "source_url": null,
+          "source_note": "No separate business school admission"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Business programs within College of Arts & Sciences — no separate business school. Rolling admissions, review begins Aug 1.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28"
+      },
+      "admit_stats": {
+        "gpa_mid50_low": 3.5,
+        "gpa_mid50_high": 3.75,
+        "sat_mid50_low": 1065,
+        "sat_mid50_high": 1240,
+        "act_mid50_low": null,
+        "act_mid50_high": null,
+        "source": "appily.com/IPEDS — test-optional, low submission rates"
+      }
+    },
+    "Augsburg University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Regional University Midwest (US News). Specific rank not confirmed."
+      },
+      "tuition": {
+        "in_state": 45452,
+        "out_of_state": 45452,
+        "year": "2024-25",
+        "source_url": "https://www.augsburg.edu/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.82,
+          "display": "82%",
+          "label": "University-wide",
+          "source_url": "https://bigfuture.collegeboard.org/colleges/augsburg-university",
+          "source_note": "College Board BigFuture"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Business program",
+          "source_url": null,
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": "Aug 1",
+        "ed_available": false
+      },
+      "business_program_note": "Department of Business Administration and Economics — ACBSP accredited. No separate admission requirements.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28"
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": null,
+        "sat_mid50_high": null,
+        "act_mid50_low": null,
+        "act_mid50_high": null,
+        "source": "Test-optional; mid-50 ranges not reliably published"
+      }
+    },
+    "Winona State University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Regional University Midwest. CollegeSimply #528 nationally."
+      },
+      "tuition": {
+        "in_state": 10139,
+        "out_of_state": 17308,
+        "year": "2024-25",
+        "source_url": "https://www.winona.edu/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.685,
+          "display": "68.5%",
+          "label": "University-wide",
+          "source_url": "https://www.collegesimply.com/colleges/minnesota/winona-state-university/",
+          "source_note": "IPEDS via CollegeSimply"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Business program",
+          "source_url": "https://www.winona.edu/academics/colleges/business/program-admission/",
+          "source_note": "Selective internal admission: 2.5 GPA + 30 credits + prerequisites. No published rate."
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": "Jul 1",
+        "ed_available": false
+      },
+      "business_program_note": "College of Business — AACSB accredited. Selective internal admission: 2.5+ GPA, 30+ credits, C or better in prerequisites.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28"
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 980,
+        "sat_mid50_high": 1250,
+        "act_mid50_low": 19,
+        "act_mid50_high": 25,
+        "source": "CollegeSimply/IPEDS"
+      }
+    },
+    "North Dakota State University-Main Campus": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 373,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 9868,
+        "out_of_state": 14802,
+        "year": "2025-26",
+        "source_url": "https://www.ndsu.edu/admission/cost-aid/cost/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.95,
+          "display": "95%",
+          "label": "University-wide",
+          "source_url": "https://www.appily.com/colleges/north-dakota-state-university-main-campus",
+          "source_note": "College Board 94.96%; appily 96%"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Business program",
+          "source_url": null,
+          "source_note": "No separate admission process"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": "Aug 1",
+        "ed_available": false
+      },
+      "business_program_note": "College of Business — Barry Hall, downtown Fargo. 8 undergraduate majors. No separate admission requirements. ND reciprocity tuition for MN residents.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 201441,
+        "source_urls": [
+          "https://www.usnews.com/best-colleges/the-university-of-akron-3123/overall-rankings"
+        ]
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 1010,
+        "sat_mid50_high": 1280,
+        "act_mid50_low": 19,
+        "act_mid50_high": 25,
+        "source": "CollegeData/appily IPEDS"
+      }
+    },
+    "Iowa State University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 111,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "National University (US News). Rank not confirmed from live sources."
+      },
+      "tuition": {
+        "in_state": 10787,
+        "out_of_state": 28881,
+        "year": "2024-25",
+        "source_url": "https://www.ir.iastate.edu/files/documents/cds/CDS-24-25.pdf"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.886,
+          "display": "89%",
+          "label": "University-wide",
+          "source_url": "https://www.ir.iastate.edu/files/documents/cds/CDS-24-25.pdf",
+          "source_note": "Official CDS 2024-25: 23095 applied, 20475 admitted"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Ivy College of Business",
+          "source_url": null,
+          "source_note": "Direct admission — declare business on main app. No separate rate."
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Ivy College of Business — direct admission, indicate business on main app. No separate application. Fully rolling admissions, no closing date.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 153603
+      },
+      "admit_stats": {
+        "gpa_mid50_low": null,
+        "gpa_mid50_high": null,
+        "sat_mid50_low": 1130,
+        "sat_mid50_high": 1350,
+        "act_mid50_low": 21,
+        "act_mid50_high": 28,
+        "source": "Official CDS 2024-25"
+      }
+    },
+    "Purdue University-Main Campus": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 51,
+        "undergrad_business": 20,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Top-50 national university (US News). Specific rank not confirmed from live sources."
+      },
+      "tuition": {
+        "in_state": 9992,
+        "out_of_state": 19984,
+        "year": "2025-26",
+        "source_url": "https://www.purdue.edu/treasurer/finance/bursar-office/tuition/fee-rates-2025-2026/undergraduate-tuition-and-fees-2025-2026/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.434,
+          "display": "43%",
+          "label": "University-wide",
+          "source_url": "https://admissions.purdue.edu/become-student/class-profile/",
+          "source_note": "Official class profile Fall 2025: 43.4% of 86,953 applicants"
+        },
+        "business_program": {
+          "value": null,
+          "display": null,
+          "label": "Daniels School of Business",
+          "source_url": null,
+          "source_note": "No separate rate. Business tuition differential: in-state ,428, OOS ,230."
+        }
+      },
+      "deadlines": {
+        "early_action": "Nov 1",
+        "early_decision": null,
+        "regular": "Jan 15",
+        "ed_available": false
+      },
+      "business_program_note": "Daniels School of Business (formerly Krannert). Direct admission — indicate business on main app. Higher tuition differential: in-state ,428/yr, OOS ,230/yr. EA Nov 1 is priority for merit scholarships.",
+      "research_method": {
+        "backend": "claude-research",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "scorecard_id": 243780
+      },
+      "admit_stats": {
+        "gpa_mid50_low": 3.7,
+        "gpa_mid50_high": 4.0,
+        "sat_mid50_low": 1220,
+        "sat_mid50_high": 1480,
+        "act_mid50_low": 28,
+        "act_mid50_high": 34,
+        "source": "Official Purdue class profile Fall 2025"
+      }
+    },
+    "Kent State University at Kent": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 232,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 13232,
+        "out_of_state": 23082,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/kent-state-university-3051/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8634,
+          "display": "86.3%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.kent.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.kent.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.kent.edu/",
+          "https://www.usnews.com/best-colleges/kent-state-university-3051/overall-rankings"
+        ],
+        "scorecard_id": 203517
+      },
+      "admit_stats": {}
+    },
+    "Miami University-Oxford": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 143,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 18161,
+        "out_of_state": 41221,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/miami-university-7104/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.754,
+          "display": "75.4%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://miamioh.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://miamioh.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://miamioh.edu/",
+          "https://www.usnews.com/best-colleges/miami-university-7104/overall-rankings"
+        ],
+        "scorecard_id": 204024
+      },
+      "admit_stats": {}
+    },
+    "Youngstown State University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 99,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 11113,
+        "out_of_state": 11473,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/youngstown-state-university-3145/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8445,
+          "display": "84.5%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://ysu.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://ysu.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://ysu.edu/",
+          "https://www.usnews.com/best-colleges/youngstown-state-university-3145/overall-rankings"
+        ],
+        "scorecard_id": 206695
+      },
+      "admit_stats": {}
+    },
+    "John Carroll University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 2,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 50500,
+        "out_of_state": 50500,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/john-carroll-university-3050/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.809,
+          "display": "80.9%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://jcu.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://jcu.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://jcu.edu/",
+          "https://www.usnews.com/best-colleges/john-carroll-university-3050/overall-rankings"
+        ],
+        "scorecard_id": 203368
+      },
+      "admit_stats": {}
+    },
+    "Ashland University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 42,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 31210,
+        "out_of_state": 31210,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/ashland-university-3012/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.764,
+          "display": "76.4%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.ashland.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.ashland.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.ashland.edu/",
+          "https://www.usnews.com/best-colleges/ashland-university-3012/overall-rankings"
+        ],
+        "scorecard_id": 201104
+      },
+      "admit_stats": {}
+    },
+    "University of Toledo": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 293,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 12744,
+        "out_of_state": 22104,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/the-university-of-toledo-3131/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.9202,
+          "display": "92.0%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.utoledo.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.utoledo.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.utoledo.edu/",
+          "https://www.usnews.com/best-colleges/the-university-of-toledo-3131/overall-rankings"
+        ],
+        "scorecard_id": 206084
+      },
+      "admit_stats": {}
+    },
+    "Wittenberg University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Scorecard stub — US News ranks filled by research step when available"
+      },
+      "tuition": {
+        "in_state": 45940,
+        "out_of_state": 45940,
+        "year": "Scorecard latest",
+        "source_url": "https://www.wittenberg.edu/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.7235,
+          "display": "72.4%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.wittenberg.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.wittenberg.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "scorecard",
+        "scope": "catalog sync",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.wittenberg.edu/"
+        ],
+        "scorecard_id": 206525
+      },
+      "admit_stats": {}
+    },
+    "Heidelberg University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 71,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 33650,
+        "out_of_state": 33650,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/heidelberg-university-3048/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8579,
+          "display": "85.8%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.heidelberg.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.heidelberg.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.heidelberg.edu/",
+          "https://www.usnews.com/best-colleges/heidelberg-university-3048/overall-rankings"
+        ],
+        "scorecard_id": 203085
+      },
+      "admit_stats": {}
+    },
+    "Denison University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Scorecard stub — US News ranks filled by research step when available"
+      },
+      "tuition": {
+        "in_state": 67000,
+        "out_of_state": 67000,
+        "year": "Scorecard latest",
+        "source_url": "https://www.denison.edu/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.1739,
+          "display": "17.4%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.denison.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.denison.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "scorecard",
+        "scope": "catalog sync",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.denison.edu/"
+        ],
+        "scorecard_id": 202523
+      },
+      "admit_stats": {}
+    },
+    "Northern Kentucky University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 384,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 11088,
+        "out_of_state": 21912,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/northern-kentucky-university-9275/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.6765,
+          "display": "67.7%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.nku.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.nku.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.nku.edu/",
+          "https://www.usnews.com/best-colleges/northern-kentucky-university-9275/overall-rankings"
+        ],
+        "scorecard_id": 157447
+      }
+    },
+    "The University of Findlay": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 373,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 41164,
+        "out_of_state": 41164,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/university-of-findlay-3045/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8337,
+          "display": "83.4%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.findlay.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.findlay.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.findlay.edu/",
+          "https://www.usnews.com/best-colleges/university-of-findlay-3045/overall-rankings"
+        ],
+        "scorecard_id": 202763
+      },
+      "admit_stats": {}
+    },
+    "Shawnee State University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 112,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 10626,
+        "out_of_state": 17358,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/shawnee-state-university-12748/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.shawnee.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.shawnee.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.shawnee.edu/",
+          "https://www.usnews.com/best-colleges/shawnee-state-university-12748/overall-rankings"
+        ],
+        "scorecard_id": 205443
+      },
+      "admit_stats": {}
+    },
+    "Case Western Reserve University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 51,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 66608,
+        "out_of_state": 66608,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/case-western-reserve-university-3024/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.3654,
+          "display": "36.5%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.case.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.case.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.case.edu/",
+          "https://www.usnews.com/best-colleges/case-western-reserve-university-3024/overall-rankings"
+        ],
+        "scorecard_id": 201645
+      },
+      "admit_stats": {}
+    },
+    "Western Reserve Academy": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Scorecard stub — US News ranks filled by research step when available"
+      },
+      "tuition": {
+        "in_state": null,
+        "out_of_state": null,
+        "year": "Scorecard latest",
+        "source_url": "https://collegescorecard.ed.gov/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://collegescorecard.ed.gov/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://collegescorecard.ed.gov/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "scorecard",
+        "scope": "catalog sync",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://collegescorecard.ed.gov/"
+        ],
+        "scorecard_id": null
+      }
+    },
+    "Cleveland State University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": 343,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 12988,
+        "out_of_state": 18510,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/cleveland-state-university-3032/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.913,
+          "display": "91.3%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.csuohio.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.csuohio.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.csuohio.edu/",
+          "https://www.usnews.com/best-colleges/cleveland-state-university-3032/overall-rankings"
+        ],
+        "scorecard_id": 202134
+      }
+    },
+    "Baldwin Wallace University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 12,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 39832,
+        "out_of_state": 39832,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/baldwin-wallace-college-3014/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.757,
+          "display": "75.7%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.bw.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.bw.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.bw.edu/",
+          "https://www.usnews.com/best-colleges/baldwin-wallace-college-3014/overall-rankings"
+        ],
+        "scorecard_id": 201195
+      }
+    },
+    "Ohio Northern University": {
+      "researched_at": "2026-06-28",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "Scorecard stub — US News ranks filled by research step when available"
+      },
+      "tuition": {
+        "in_state": 39800,
+        "out_of_state": 39800,
+        "year": "Scorecard latest",
+        "source_url": "https://www.onu.edu/"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.744,
+          "display": "74.4%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.onu.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.onu.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "scorecard",
+        "scope": "catalog sync",
+        "researched_at": "2026-06-28",
+        "source_urls": [
+          "https://www.onu.edu/"
+        ],
+        "scorecard_id": 204635
+      },
+      "admit_stats": {}
+    }
+  },
+  "last_updated": "2026-06-28"
+}

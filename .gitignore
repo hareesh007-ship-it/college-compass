@@ -1,0 +1,64 @@
+# --- Secrets ---
+.env
+.env.local
+*.env
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# --- Root-level legacy paths (backward compat — real data, never commit) ---
+input/
+output/
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+
+# --- Student instances — private data (PII — never commit) ---
+# Add a line here for each real student you create, e.g.:
+#   students/sid/
+students/sid/
+
+# Keep the example student (alex-sample) committed — it has no real data.
+# To exclude outputs inside example students:
+students/*/output/*.xlsx
+students/*/output/*.html
+students/*/output/*.json
+students/*/output/*.md
+students/*/output/logs/
+# But preserve .gitkeep placeholders:
+!students/*/output/.gitkeep
+
+# Per-student catalog is generated — do not commit.
+students/*/data/colleges/catalog.json
+
+# --- Shared data files (reference / cache) ---
+# The research cache IS committed — it's the shared school research library.
+# Uncomment the line below only if you want to exclude it:
+# data/college_research_cache.json
+data/us_news_rankings_2026.json
+
+# --- Tool config (machine-level — not per-student, not committed) ---
+config/pro.json
+
+# --- Logs ---
+students/*/data/logs/
+logs/
+*.log
+
+# --- IDE ---
+.idea/
+.vscode/
+
+# --- Jupyter ---
+.ipynb_checkpoints/

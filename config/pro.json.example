@@ -1,0 +1,8 @@
+{
+  "research_backend": "cursor",
+  "logging": {
+    "enabled": true,
+    "path": "data/logs/research_log.jsonl",
+    "level": "info"
+  }
+}

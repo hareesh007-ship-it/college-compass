@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "college-finder"
+version = "0.1.0"
+description = "Local Safety/Target/Reach matcher + selection sheet for US college admissions"
+requires-python = ">=3.9"
+dependencies = [
+    "openpyxl>=3.1.0",
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.0",
+    "pypdf>=4.0.0",
+]
+
+[project.optional-dependencies]
+# Option B — Pro path (BYO LLM): pip install ".[pro]"
+# Note: OpenAI and Anthropic are called via urllib (no SDK needed).
+# Add openai/anthropic here only if you switch to their official SDKs.
+pro  = []
+# Option A — Free path (Ollama): pip install ".[free]"
+free = ["ollama>=0.4.0"]
+
+[project.scripts]
+# All three commands work on macOS, Linux, and Windows after `pip install -e .`
+college-finder      = "college_finder_cli:main"
+college-finder-free = "college_finder_free:main"
+college-finder-pro  = "college_finder_pro:main"
+
+[tool.setuptools]
+packages = []
+py-modules = ["college_finder_cli", "college_finder_free", "college_finder_pro"]
