@@ -28,9 +28,21 @@ python -m venv .venv
 pip install -e ".[free]"
 ```
 
+**Windows (PowerShell):**
+
+```powershell
+git clone <your-repo-url> college-finder
+cd college-finder
+python -m venv .venv
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+.venv\Scripts\Activate.ps1
+pip install -e ".[free]"
+```
+
 > **Every time you open a new terminal**, activate the venv first:  
 > macOS/Linux: `source .venv/bin/activate`  
-> Windows: `.venv\Scripts\activate`
+> Windows Command Prompt: `.venv\Scripts\activate`  
+> Windows PowerShell: `.venv\Scripts\Activate.ps1`
 
 ---
 

@@ -28,9 +28,21 @@ python -m venv .venv
 pip install -e ".[pro]"
 ```
 
+**Windows (PowerShell):**
+
+```powershell
+git clone <your-repo-url> college-finder
+cd college-finder
+python -m venv .venv
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+.venv\Scripts\Activate.ps1
+pip install -e ".[pro]"
+```
+
 > **Every time you open a new terminal**, activate the venv first:  
 > macOS/Linux: `source .venv/bin/activate`  
-> Windows: `.venv\Scripts\activate`
+> Windows Command Prompt: `.venv\Scripts\activate`  
+> Windows PowerShell: `.venv\Scripts\Activate.ps1`
 
 ---
 
@@ -119,14 +131,17 @@ Schools already in the cache are skipped on repeat runs — so subsequent runs a
 
 ## PDF extraction (optional)
 
-Drop transcript and resume PDFs into `students/<your-name>/input/`:
+Drop your student's transcript, resume, or any other supporting documents into `students/<your-name>/input/`:
 
 ```text
-students/<your-name>/input/transcript.pdf
-students/<your-name>/input/resume.pdf
+students/<your-name>/input/
+  ├── student profile input.xlsx        ← required
+  ├── Lincoln High School Transcript.pdf  ← any name, any of these formats
+  ├── Jane Smith Resume.docx
+  └── Activities Summary.txt
 ```
 
-The pipeline reads them automatically and fills any blank fields in your Excel profile. Excel values always take precedence — PDFs only fill fields you left empty.
+The pipeline reads all `.pdf`, `.docx`, and `.txt` files in that folder automatically — any filename works. It fills any blank fields in your Excel profile using the LLM. Excel values always take precedence — documents only fill fields you left empty.
 
 ---
 

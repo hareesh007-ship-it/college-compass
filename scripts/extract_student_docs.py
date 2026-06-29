@@ -22,7 +22,8 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-PDF_FILENAMES = ("transcript.pdf", "resume.pdf", "test_scores.pdf", "test_report.pdf")
+SUPPORTED_EXTENSIONS = (".pdf", ".docx", ".txt")
+EXCLUDED_FILENAMES = {"student profile input.xlsx"}
 
 SYSTEM_PROMPT = """\
 You are a structured data extraction assistant. Extract student academic and activity data \
@@ -79,18 +80,51 @@ def _read_pdf(path: Path) -> str:
         return ""
 
 
+def _read_docx(path: Path) -> str:
+    """Extract text from a .docx file. Returns empty string if python-docx not installed."""
+    try:
+        from docx import Document  # type: ignore
+    except ImportError:
+        return ""
+    try:
+        doc = Document(str(path))
+        return "\n".join(p.text for p in doc.paragraphs if p.text.strip())
+    except Exception:
+        return ""
+
+
+def _read_txt(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return ""
+
+
+def _read_file(path: Path) -> str:
+    ext = path.suffix.lower()
+    if ext == ".pdf":
+        return _read_pdf(path)
+    if ext == ".docx":
+        return _read_docx(path)
+    if ext == ".txt":
+        return _read_txt(path)
+    return ""
+
+
 def _collect_pdf_texts(input_dir: Path) -> Dict[str, str]:
-    """Return {filename: text} for every readable PDF in input_dir."""
+    """Return {filename: text} for every readable document in input_dir, any filename."""
     texts: Dict[str, str] = {}
-    for fname in PDF_FILENAMES:
-        path = input_dir / fname
-        if path.is_file():
-            text = _read_pdf(path)
-            if text.strip():
-                texts[fname] = text
-                print(f"  [student docs] Read {fname} ({len(text)} chars)")
-            else:
-                print(f"  [student docs] {fname} found but no extractable text (image-only PDF?)")
+    for path in sorted(input_dir.iterdir()):
+        if path.name in EXCLUDED_FILENAMES:
+            continue
+        if path.suffix.lower() not in SUPPORTED_EXTENSIONS:
+            continue
+        text = _read_file(path)
+        if text.strip():
+            texts[path.name] = text
+            print(f"  [student docs] Read {path.name} ({len(text)} chars)")
+        else:
+            print(f"  [student docs] {path.name} found but no extractable text — skipping")
     return texts
 
 

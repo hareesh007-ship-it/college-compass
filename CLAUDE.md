@@ -8,7 +8,7 @@ Open-source Python CLI for US undergrad college admissions. Any family clones th
 
 The matcher is deterministic Python. LLMs are used in three places only:
 
-1. **Student doc extraction** — reads transcript.pdf / resume.pdf → fills blank profile fields
+1. **Student doc extraction** — reads any .pdf, .docx, or .txt files in input/ → fills blank profile fields
 2. **School name suggestions** — optional, only when `any_other_preference` is set
 3. **College auto-research** — fetches each school's admissions page → extracts mid-50%, deadlines, program rates into cache
 
@@ -51,8 +51,8 @@ Read these files first:
 | Path | Role |
 |------|------|
 | `students/<name>/input/student profile input.xlsx` | Student profile (Excel — primary input) |
-| `students/<name>/input/transcript.pdf` | Optional — LLM extracts GPA, courses |
-| `students/<name>/input/resume.pdf` | Optional — LLM extracts activities, awards |
+| `students/<name>/input/transcript.pdf` (or any filename) | Optional — LLM extracts GPA, courses |
+| `students/<name>/input/resume.pdf` (or any filename) | Optional — LLM extracts activities, awards |
 | `data/college_research_cache.json` | Shared research cache — single source of truth |
 | `students/<name>/data/colleges/catalog.json` | Discovered schools for this student (generated) |
 | `config/pro.json` | Pro backend config (research_backend, logging) |
