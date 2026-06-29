@@ -17,8 +17,8 @@ venv/
 env/
 
 # --- Root-level legacy paths (backward compat — real data, never commit) ---
-input/
-output/
+/input/
+/output/
 
 # --- macOS ---
 .DS_Store
@@ -29,18 +29,23 @@ output/
 #   students/sid/
 students/sid/
 
-# Keep the example student (alex-sample) committed — it has no real data.
-# To exclude outputs inside example students:
+# Exclude outputs and generated data for all students:
 students/*/output/*.xlsx
 students/*/output/*.html
 students/*/output/*.json
 students/*/output/*.md
 students/*/output/logs/
-# But preserve .gitkeep placeholders:
 !students/*/output/.gitkeep
 
 # Per-student catalog is generated — do not commit.
 students/*/data/colleges/catalog.json
+
+# Exception: alex-sample ships with inputs and outputs so users can see sample results
+!students/alex-sample/input/
+!students/alex-sample/input/**
+!students/alex-sample/output/Alex - US College Selection.xlsx
+!students/alex-sample/output/Alex - College Prep Gap Analysis.html
+!students/alex-sample/data/colleges/catalog.json
 
 # --- Shared data files (reference / cache) ---
 # The research cache IS committed — it's the shared school research library.
