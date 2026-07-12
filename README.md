@@ -7,7 +7,7 @@ College admissions research is time-consuming and expensive. This tool does the 
 Fill in a student profile — grades, test scores, budget, state, preferred majors, and any schools you already have in mind. Run one command. The tool searches thousands of US colleges, researches each school's admissions data, and delivers:
 
 - A **Safety / Target / Reach classification** for every matching school
-- A **26-column Excel selection sheet** with rankings, tuition, acceptance rates, deadlines, and fit scores
+- A **27-column Excel selection sheet** with rankings, tuition, average net price, acceptance rates, deadlines, and fit scores
 - A **printable gap analysis report** showing exactly where the student stands against each school's admit profile
 
 **How it works under the hood:**
@@ -28,7 +28,7 @@ Fill in a student profile — grades, test scores, budget, state, preferred majo
 Fill in a student Excel profile. Run one command. Get:
 
 - A **Safety / Target / Reach classification** for each matching school
-- A **26-column Excel selection sheet** (rankings, tuition, fit, deadlines, acceptance rates)
+- A **27-column Excel selection sheet** (rankings, tuition, average net price, fit, deadlines, acceptance rates)
 - A **printable gap analysis HTML** showing where the student stands vs. each school's admit profile
 
 The matcher is deterministic Python — no LLM is called on every run. LLMs are used only to help research and populate the shared `data/college_research_cache.json` once per school.
@@ -37,15 +37,87 @@ The matcher is deterministic Python — no LLM is called on every run. LLMs are 
 
 ## How it works
 
-| Step | What happens |
-| --- | --- |
-| 1. **Fill your profile** | Enter GPA, test scores, budget, state, major, and any schools you're interested in into an Excel file |
-| 2. **Discover schools** | Python queries the free College Scorecard API to find matching schools nationwide |
-| 3. **Research each school** | LLM fetches each school's admissions page and extracts mid-50% bands, deadlines, and acceptance rates into a local cache |
-| 4. **Classify** | Pure Python compares your profile to each school's data → Safety, Target, or Reach |
-| 5. **Output** | 26-column Excel sheet + printable gap analysis HTML saved to your computer |
+### Folder structure
 
-The research cache is shared across runs — once a school is researched, it's saved locally and skipped on future runs.
+Every student gets their own folder under `students/`. The repo ships with a fictional example — `alex-sample` — so you can see exactly what goes where before touching real data.
+
+```text
+students/
+  alex-sample/                          ← fictional example (committed to repo)
+    input/
+      student profile input.xlsx        ← fill this in (required)
+      LINCOLN HIGH SCHOOL Transcript.pdf ← optional — any filename works
+      ALEX JOHNSON-Resume.docx          ← optional — any filename works
+      Plan for Senior Year.txt          ← optional — any filename works
+    output/
+      Alex - US College Selection.xlsx
+      Alex - College Prep Gap Analysis.html
+    data/
+      college_matches.json              ← full S/T/R match report
+
+  your-student/                         ← copy alex-sample, rename, fill in
+    input/
+      student profile input.xlsx
+
+data/
+  college_research_cache.json           ← shared across ALL students
+                                           once a school is researched, it's never fetched again
+```
+
+### Step by step
+
+| Step | What happens | What you touch |
+| --- | --- | --- |
+| 1. **Fill your profile** | Open `students/<name>/input/student profile input.xlsx` and enter GPA, test scores, budget, state, major, and any schools already on your list | Excel file |
+| 2. **Drop in documents** | Optionally add transcript, resume, or any `.pdf`, `.docx`, or `.txt` file to the same `input/` folder — any filename works. The LLM reads them and fills any blank profile fields automatically | Input folder |
+| 3. **Discover schools** | Python queries the free College Scorecard API filtered by your state, region, budget, and major. Your listed schools are always included | Automatic |
+| 4. **Research each school** | For schools not yet in the cache, the LLM fetches each school's admissions page and extracts mid-50% GPA/SAT/ACT bands, acceptance rates, and deadlines into `data/college_research_cache.json` | Automatic (cached after first run) |
+| 5. **Classify** | Pure Python compares your profile to each school's data → Safety, Target, or Reach | Automatic |
+| 6. **Output** | 27-column Excel sheet + printable gap analysis HTML written to `students/<name>/output/` | Open and review |
+
+The research cache is shared across all students — once a school is researched, it's saved locally and skipped on every future run.
+
+### Sample outputs (alex-sample)
+
+---
+
+**📁 Input folder** — place your Excel profile and any supporting documents here:
+
+![Input folder](docs/screenshots/Inputfolder1.jpg)
+
+&nbsp;
+
+---
+
+**📊 Student profile Excel** — fill in GPA, test scores, budget, state, and major:
+
+![Student profile Excel](docs/screenshots/inputfile1.jpg)
+
+&nbsp;
+
+---
+
+**📁 Output folder** — where your files will be generated after running:
+
+![Output folder](docs/screenshots/outputfolder1.jpg)
+
+&nbsp;
+
+---
+
+**📈 Excel selection sheet** — 27-column sheet with Safety/Target/Reach, tuition, net price, deadlines:
+
+![Excel selection sheet](docs/screenshots/outputfile1.jpg)
+
+&nbsp;
+
+---
+
+**📋 Gap analysis report** — printable HTML showing where the student stands against each school:
+
+![Gap analysis report](docs/screenshots/outputfile2.jpg)
+
+&nbsp;
 
 ---
 
@@ -194,7 +266,7 @@ college-finder-pro --student alex-sample run
 
 | File | Description |
 | --- | --- |
-| `students/alex-sample/output/Alex - US College Selection.xlsx` | 26-column selection sheet |
+| `students/alex-sample/output/Alex - US College Selection.xlsx` | 27-column selection sheet |
 | `students/alex-sample/output/Alex - College Prep Gap Analysis.html` | Printable gap report |
 | `students/alex-sample/data/college_matches.json` | Full match report (S/T/R) |
 
@@ -230,12 +302,10 @@ All paths are under `students/<name>/`:
 
 | File | Description |
 | --- | --- |
-| `output/{FirstName} - US College Selection.xlsx` | 26-column sheet: rankings, tuition, fit, deadlines, accept rates |
+| `output/{FirstName} - US College Selection.xlsx` | 27-column sheet: rankings, tuition, net price, fit, deadlines, accept rates |
 | `output/{FirstName} - College Prep Gap Analysis.html` | Printable gap report — open in browser → Print → PDF |
 | `data/college_matches.json` / `.md` | Full Safety / Target / Reach report |
 | `data/colleges/catalog.json` | Discovered school list for this run (generated) |
-
-When `alternate_major` is set in the profile, a second Excel tab and second gap HTML are generated automatically.
 
 ---
 
