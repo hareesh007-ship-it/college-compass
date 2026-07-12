@@ -225,7 +225,6 @@ The Excel file (`student profile input.xlsx`) is the only supported input format
 | State of residence | In-state tuition, reciprocity, discovery filter |
 | Budget (max tuition/year) | Discovery filter, "within budget?" column |
 | Intended major | Business-program filter, program admit logic, sheet column headers |
-| Alternate major (optional) | Second matcher run, second Excel tab, second gap HTML |
 | Schools especially interested in | Always included in catalog, always kept in output |
 | Preferences (regions, public/private) | Discovery and filter stage |
 
@@ -284,7 +283,6 @@ Paths are relative to `students/<name>/`:
 |------|----------|----------|------|
 | `{FirstName} - US College Selection.xlsx` | `output/` | `build_selection_sheet.py` | Deliverable |
 | `{FirstName} - College Prep Gap Analysis.html` | `output/` | `build_gap_analysis.py` | Deliverable |
-| `{FirstName} - College Prep Gap Analysis - {Major}.html` | `output/` | `build_gap_analysis.py` | When `alternate_major` set |
 | `college_matches.json` / `.md` | `data/` | `college_finder.py` | Intermediate match report |
 | `colleges/catalog.json` | `data/colleges/` | `discover_colleges.py` | Generated catalog (gitignored) |
 | `logs/research_log.jsonl` | `data/logs/` | `run_log.py` | Audit trail (gitignored) |

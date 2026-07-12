@@ -41,14 +41,6 @@ PROFILE_SECTIONS: List[ProfileSection] = [
                 "Required. Drives program fit and specialty rank column (e.g. entrepreneurship, CS, nursing).",
             ),
             ProfileFieldSpec(
-                "Alternate major",
-                "alternate_major",
-                False,
-                "",
-                "Optional — enter only if you are considering a second major, else leave blank. "
-                "Example: Computer Science. A future run will produce a side-by-side comparison sheet.",
-            ),
-            ProfileFieldSpec(
                 "State of residence",
                 "state_of_residence",
                 True,

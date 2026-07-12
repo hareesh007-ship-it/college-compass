@@ -4,18 +4,18 @@ from __future__ import annotations
 
 import json
 import os
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Dict, Tuple
 
 from _paths import OUTPUT, STUDENT_DATA
 from cache_sync import sync_catalog_to_cache
-from college_finder import OUTPUT_JSON, OUTPUT_MD, match_colleges, match_colleges_for_major, write_markdown
+from college_finder import OUTPUT_JSON, OUTPUT_MD, match_colleges, write_markdown
 from discover_colleges import discover_colleges
 from college_catalog import save_catalog
 from load_profile import load_profile
 from profile_fields import PROFILE_XLSX
 from research_colleges import research_catalog_colleges
 
-ProfileBundle = Tuple[Dict[str, Any], Dict[str, Any], Optional[Dict[str, Any]], str]
+ProfileBundle = Tuple[Dict[str, Any], Dict[str, Any], str]
 
 
 def prepare_from_profile(profile: Dict[str, Any]) -> None:
@@ -78,12 +78,7 @@ def load_and_match() -> ProfileBundle:
     source = profile.pop("_source", str(PROFILE_XLSX))
     prepare_from_profile(profile)
     report = match_colleges(profile)
-    alt_report: Optional[Dict[str, Any]] = None
-    alt_major = profile.get("alternate_major")
-    if alt_major:
-        print(f"Alternate major detected: {alt_major} — running second match...")
-        alt_report = match_colleges_for_major(profile, alt_major)
-    return profile, report, alt_report, source
+    return profile, report, source
 
 
 def write_match_artifacts(report: Dict[str, Any], profile_source: str) -> None:
@@ -106,7 +101,7 @@ def write_match_artifacts(report: Dict[str, Any], profile_source: str) -> None:
 
 
 def run_pipeline(*, write_matches: bool = True, write_sheet: bool = True) -> int:
-    profile, report, alt_report, source = load_and_match()
+    profile, report, source = load_and_match()
     os.makedirs(OUTPUT, exist_ok=True)
     os.makedirs(STUDENT_DATA, exist_ok=True)
 
@@ -115,6 +110,6 @@ def run_pipeline(*, write_matches: bool = True, write_sheet: bool = True) -> int
     if write_sheet:
         from build_selection_sheet import write_selection_outputs  # noqa: WPS433
 
-        write_selection_outputs(profile, report, source, alt_report=alt_report)
+        write_selection_outputs(profile, report, source)
 
     return 0

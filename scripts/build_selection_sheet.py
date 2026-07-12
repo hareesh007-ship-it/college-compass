@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from _paths import OUTPUT
 from acceptance_data import display_pair
@@ -42,6 +42,7 @@ def sheet_columns(profile: Dict[str, Any]) -> List[str]:
         "Public/Private",
         rank_col,
         tuition_col,
+        "Avg Net Price (Scorecard)",
         "Fit Category",
         "Program Admit Type",
         "Program Requirements",
@@ -137,6 +138,7 @@ def build_row(
         "Public/Private": entry["public_private"],
         rank_col: rank_display,
         tuition_col: fmt_money(entry["tuition_estimate"]),
+        "Avg Net Price (Scorecard)": fmt_money(entry["avg_net_price"]) if entry.get("avg_net_price") else "—",
         "Fit Category": entry.get("category") or ("Excluded" if entry.get("excluded") else ""),
         "Program Admit Type": entry.get("program_admit_type", "—"),
         "Program Requirements": entry.get("program_requirements", "—"),
@@ -306,8 +308,6 @@ def write_xlsx(
     header_block: List[List[str]],
     data_rows: List[Dict[str, str]],
     columns: List[str],
-    *,
-    alt_tab: Optional[Dict[str, Any]] = None,
 ) -> None:
     try:
         from openpyxl import Workbook
@@ -321,7 +321,6 @@ def write_xlsx(
     header_font = Font(bold=True)
     section_fill = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid")
 
-    # --- Tab 1: College Selection - {Major} ---
     ws = wb.active
     ws.title = tab_title[:31]
 
@@ -345,26 +344,6 @@ def write_xlsx(
     ws.column_dimensions["Y"].width = 48
     ws.column_dimensions["Z"].width = 36
 
-    # --- Tab 2 (optional): College Selection - {Alternate Major} ---
-    if alt_tab:
-        ws4 = wb.create_sheet(alt_tab["title"][:31])
-        alt_cols = alt_tab["columns"]
-        for row in alt_tab["header_block"]:
-            ws4.append(row)
-        ws4.append(alt_cols)
-        alt_header_row = len(alt_tab["header_block"]) + 1
-        for cell in ws4[alt_header_row]:
-            cell.font = header_font
-            cell.fill = section_fill
-        for row in alt_tab["data_rows"]:
-            ws4.append([row.get(col, "") for col in alt_cols])
-        for cell in ws4[4]:
-            cell.font = Font(bold=True)
-        ws4.freeze_panes = f"A{len(alt_tab['header_block']) + 2}"
-        ws4.column_dimensions["A"].width = 42
-        ws4.column_dimensions["Y"].width = 48
-        ws4.column_dimensions["Z"].width = 36
-
     wb.save(path)
 
 
@@ -372,8 +351,6 @@ def write_selection_outputs(
     profile: Dict[str, Any],
     report: Dict[str, Any],
     profile_source: str,
-    *,
-    alt_report: Optional[Dict[str, Any]] = None,
 ) -> int:
     """Build XLSX + gap analysis HTML from an existing profile + match report."""
     eff_sat = report["matching_notes"]["effective_sat_used"]
@@ -391,48 +368,12 @@ def write_selection_outputs(
     data_rows = [
         build_row(e, profile, eff_sat, eff_act, rank_col, tuition_col, program_rate_col, apply_col) for e in entries
     ]
-    primary_major = profile.get("intended_major", "")
-    alt_major = profile.get("alternate_major", "") if alt_report is not None else ""
 
-    def _major_label(major: str) -> Optional[str]:
-        """First word of major used as file suffix — only when two majors are present."""
-        if not alt_major:
-            return None
-        words = major.split()
-        return words[0] if words else major
-
-    gap_html = write_gap_analysis(profile, report, major_label=_major_label(primary_major))
-    if alt_report is not None:
-        alt_profile_for_gap = {**profile, "intended_major": alt_major}
-        write_gap_analysis(alt_profile_for_gap, alt_report, major_label=_major_label(alt_major))
-
-    tab_title = _sheet_tab_name(primary_major)
-
-    alt_tab: Optional[Dict[str, Any]] = None
-    if alt_report is not None:
-        alt_major = profile.get("alternate_major", "Alternate Major")
-        alt_profile = {**profile, "intended_major": alt_major}
-        alt_cols = sheet_columns(alt_profile)
-        alt_rank_col = us_news_column_label(alt_major)
-        alt_tuition_col = tuition_column_label(alt_profile)
-        alt_program_rate_col = accept_rate_program_column_label(alt_major)
-        alt_apply_col = f"Apply Fall {applying_fall}"
-        alt_header = profile_header_rows(alt_profile, eff_sat, eff_act, alt_cols)
-        alt_entries = sort_entries(alt_report)
-        alt_data_rows = [
-            build_row(e, alt_profile, eff_sat, eff_act, alt_rank_col, alt_tuition_col, alt_program_rate_col, alt_apply_col)
-            for e in alt_entries
-        ]
-        alt_tab = {
-            "title": _sheet_tab_name(alt_major),
-            "columns": alt_cols,
-            "header_block": alt_header,
-            "data_rows": alt_data_rows,
-        }
-        print(f"Alternate major tab: {alt_tab['title']!r} ({len(alt_data_rows)} rows)")
+    gap_html = write_gap_analysis(profile, report)
+    tab_title = _sheet_tab_name(profile.get("intended_major", ""))
 
     os.makedirs(OUTPUT, exist_ok=True)
-    write_xlsx(str(paths["xlsx"]), tab_title, header, data_rows, columns, alt_tab=alt_tab)
+    write_xlsx(str(paths["xlsx"]), tab_title, header, data_rows, columns)
 
     print(f"Wrote {paths['xlsx']} (if openpyxl available)")
     print(

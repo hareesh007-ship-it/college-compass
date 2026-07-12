@@ -50,7 +50,6 @@ Loader: `scripts/load_profile.py` reads Excel via field map in `scripts/profile_
 |-------|------|-------|
 | `sat` | number \| null | At least one of `sat` or `act` needed for test fit |
 | `act` | number \| `{composite, …}` \| null | Effective score = max(SAT, ACT-equiv) |
-| `alternate_major` | string \| null | Second matcher run, second Excel tab, second gap HTML |
 | `preferences.surrounding_states` | string[] | Expands allowed states beyond `regions` |
 | `preferences.public_ok` / `private_ok` | boolean | Default true if omitted |
 | `schools_interested_in` | string[] | Priority flag on matches; always kept in catalog |

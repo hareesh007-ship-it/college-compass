@@ -77,6 +77,7 @@ def _catalog_entry(cache_key: str, parsed: Dict[str, Any], source: str) -> Dict[
         "public_private": parsed.get("public_private"),
         "tuition_in_state": parsed.get("tuition_in_state"),
         "tuition_out_of_state": parsed.get("tuition_out_of_state"),
+        "avg_net_price": parsed.get("avg_net_price"),
         "admission_rate": parsed.get("admission_rate"),
         "avg_admit_sat": parsed.get("avg_admit_sat"),
         "avg_admit_act": parsed.get("avg_admit_act"),

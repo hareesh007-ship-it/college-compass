@@ -9,8 +9,8 @@
 
 ## Summary
 
-- **Safety (18):** Ohio Northern University, University of Wisconsin-La Crosse, University of Wisconsin-Eau Claire, University of Wisconsin-Stout, University of Wisconsin-Whitewater, University of Wisconsin-Platteville, University of Wisconsin-Stevens Point, University of Wisconsin-River Falls, University of Wisconsin-Green Bay, University of Wisconsin-Parkside, University of Wisconsin-Superior, Miami University-Oxford, Kent State University at Kent, University of Toledo, University of Wisconsin-Milwaukee, Cleveland State University, University of Wisconsin-Oshkosh, North Dakota State University-Main Campus
-- **Target (0):** None
+- **Safety (15):** Ohio Northern University, University of Wisconsin-La Crosse, University of Wisconsin-Eau Claire, University of Wisconsin-Stout, University of Wisconsin-Whitewater, University of Wisconsin-Platteville, University of Wisconsin-Stevens Point, University of Wisconsin-River Falls, University of Wisconsin-Green Bay, Iowa State University, University of Wisconsin-Parkside, University of Wisconsin-Superior, University of Wisconsin-Milwaukee, University of Wisconsin-Oshkosh, North Dakota State University-Main Campus
+- **Target (1):** Purdue University-Main Campus
 - **Reach (0):** None
 
 ## Your stated interests
@@ -121,6 +121,17 @@ Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
 - Discovered via scorecard; confirm program fit.
 - Classified as safety: stats competitive and acceptance rate relatively high.
 
+### Iowa State University
+National #111 | Public | Iowa | Tuition ~$28,881 | Accept ~88.6%
+Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
+- Your GPA 3.45 (no published mid-50% range for this school).
+- Your effective SAT 1250 vs mid-50% 1130–1350 (In mid-50%).
+- Your ACT 26 vs mid-50% 21–28 (In mid-50%).
+- Relevant acceptance rate: 88.6% (University-wide)
+- Out-of-state tuition $28,881/year.
+- Ivy College of Business — direct admission, indicate business on main app. No separate application. Fully rolling admissions, no closing date.
+- Classified as safety: stats competitive and acceptance rate relatively high.
+
 ### University of Wisconsin-Parkside
 Regional / unranked (national) | Public | Wisconsin | Tuition ~$17,429 | Accept ~75.4%
 Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
@@ -143,39 +154,6 @@ Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
 - Discovered via scorecard; confirm program fit.
 - Classified as safety: stats competitive and acceptance rate relatively high.
 
-### Miami University-Oxford
-National #143 | Private | Ohio | Tuition ~$18,161 | Accept ~75.4%
-Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
-- Your GPA 3.45 (no published mid-50% range for this school).
-- Your effective SAT 1250 (max of SAT 1180 / ACT 26 equiv) (no published mid-50% range).
-- Your ACT 26 (no published mid-50% range).
-- Relevant acceptance rate: 75.4% (University-wide (Scorecard))
-- In-state tuition $18,161/year — Ohio resident.
-- Discovered via user_preferred; confirm program fit.
-- Classified as safety: stats competitive and acceptance rate relatively high.
-
-### Kent State University at Kent
-National #232 | Public | Ohio | Tuition ~$13,232 | Accept ~86.3%
-Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
-- Your GPA 3.45 (no published mid-50% range for this school).
-- Your effective SAT 1250 (max of SAT 1180 / ACT 26 equiv) (no published mid-50% range).
-- Your ACT 26 (no published mid-50% range).
-- Relevant acceptance rate: 86.3% (University-wide (Scorecard))
-- In-state tuition $13,232/year — Ohio resident.
-- Discovered via user_preferred; confirm program fit.
-- Classified as safety: stats competitive and acceptance rate relatively high.
-
-### University of Toledo
-National #293 | Public | Ohio | Tuition ~$12,744 | Accept ~92.0%
-Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
-- Your GPA 3.45 (no published mid-50% range for this school).
-- Your effective SAT 1250 (max of SAT 1180 / ACT 26 equiv) (no published mid-50% range).
-- Your ACT 26 (no published mid-50% range).
-- Relevant acceptance rate: 92.0% (University-wide (Scorecard))
-- In-state tuition $12,744/year — Ohio resident.
-- Discovered via user_preferred; confirm program fit.
-- Classified as safety: stats competitive and acceptance rate relatively high.
-
 ### University of Wisconsin-Milwaukee
 National #301 | Public | Wisconsin | Tuition ~$23,516 | Accept ~97.0%
 Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
@@ -185,17 +163,6 @@ Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
 - Relevant acceptance rate: 97.0% (University-wide)
 - Out-of-state tuition $23,516/year.
 - Sheldon B. Lubar College of Business. No separate admission. Rolling admissions. MN-WI reciprocity tuition for MN residents.
-- Classified as safety: stats competitive and acceptance rate relatively high.
-
-### Cleveland State University
-National #343 | Public | Ohio | Tuition ~$12,988 | Accept ~91.3%
-Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
-- Your GPA 3.45 (no published mid-50% range for this school).
-- Your effective SAT 1250 (max of SAT 1180 / ACT 26 equiv) (no published mid-50% range).
-- Your ACT 26 (no published mid-50% range).
-- Relevant acceptance rate: 91.3% (University-wide (Scorecard))
-- In-state tuition $12,988/year — Ohio resident.
-- Discovered via user_preferred; confirm program fit.
 - Classified as safety: stats competitive and acceptance rate relatively high.
 
 ### University of Wisconsin-Oshkosh
@@ -220,16 +187,23 @@ Deadlines — EA: N/A | ED: N/A | Regular: Aug 1
 - College of Business — Barry Hall, downtown Fargo. 8 undergraduate majors. No separate admission requirements. ND reciprocity tuition for MN residents.
 - Classified as safety: stats competitive and acceptance rate relatively high.
 
-## Excluded (region, budget, or program fit)
+## Target
 
-- **Case Western Reserve University:** Tuition $66,608 exceeds budget $30,000
-- **Ashland University:** Tuition $31,210 exceeds budget $30,000
-- **Baldwin Wallace University:** Tuition $39,832 exceeds budget $30,000
+### Purdue University-Main Campus
+National #51 | Business #20 | Public | Indiana | Tuition ~$19,984 | Accept ~43.4%
+Deadlines — EA: Nov 1 | ED: N/A | Regular: Jan 15
+- Your GPA 3.45 vs mid-50% 3.70–4.00 (Below (-0.25 vs low)).
+- Your effective SAT 1250 vs mid-50% 1220–1480 (In mid-50%).
+- Your ACT 26 vs mid-50% 28–34 (Below (-2 vs low)).
+- Relevant acceptance rate: 43.4% (University-wide)
+- Out-of-state tuition $19,984/year.
+- Daniels School of Business (formerly Krannert). Direct admission — indicate business on main app. Higher tuition differential: in-state ,428/yr, OOS ,230/yr. EA Nov 1 is priority for merit scholarships.
 
 ## Recommended next steps (Fall 2026 application cycle)
 
 1. **Finalize school list by Aug 2026** — Target 8–12 schools (mix of Safety / Target / Reach).
 2. **Priority schools** — Ohio Northern University: confirm deadlines and visit if possible.
+3. **Early Action** — Purdue University-Main Campus offer EA; good for Alex without binding ED.
 4. **Testing** — Use best SAT/ACT per school policy (effective SAT 1250 / ACT 26 for this run).
 5. **Early Decision** — Only if one school is a clear first choice (binding).
 6. **Common App / essays** — Start personal statement summer before apply year; supplementals in fall.

@@ -117,9 +117,9 @@ HS historical outcomes (`high_school_outcomes.json`) deferred — see [`ENHANCEM
 |------|----------|-------|
 | `college_matches.json` | `college_finder.py` (refreshed by pipeline) | Full match report per college |
 | `college_matches.md` | `college_finder.py` | Human-readable match summary |
-| `{FirstName} - US College Selection.xlsx` | `build_selection_sheet.py` | 1–2 tabs: `College Selection - {Major}` (+ `College Selection - {Alternate Major}` when `alternate_major` is set) |
+| `{FirstName} - US College Selection.xlsx` | `build_selection_sheet.py` | One tab: `College Selection - {Major}` |
 | `{FirstName} - College Prep Gap Analysis.html` | `build_gap_analysis.py` | Printable HTML gap report (single-major run) |
-| `{FirstName} - College Prep Gap Analysis - {Major}.html` | `build_gap_analysis.py` | Per-major HTML reports when `alternate_major` is set in profile |
+| `{FirstName} - College Prep Gap Analysis.html` | `build_gap_analysis.py` | Printable HTML gap report (open in browser → Print → PDF) |
 | `logs/research_log.jsonl` | `run_log.py` | Pipeline run history (gitignored) |
 
 Output filenames are parameterized from the profile first name via `output_paths.py`.
@@ -293,28 +293,29 @@ Column order is defined in `build_selection_sheet.py` → `sheet_columns()`. Col
 | 2 | Public/Private | `entry["public_private"]` | `match_colleges()` | Seed (not in cache) |
 | 3 | US News — *Program* Rank (2026) | `program_rank_for_major(entry, major)` | `build_row()` → `college_research.py` | Cache `rankings.*` |
 | 4 | Tuition (Student) | `entry["tuition_estimate"]` | `tuition_for_student()` after cache overlay | Cache `tuition` + reciprocity logic |
-| 5 | Fit Category | `entry["category"]` or `Excluded` | `classify_fit()` | Matcher (uses cache rates + mid-50%) |
-| 6 | Program Admit Type | `entry["program_admit_type"]` | `resolve_program_admit()` | `program_admit.py` defaults + cache `admit_profile` |
-| 7 | Program Requirements | `entry["program_requirements"]` | `resolve_program_admit()` | Direct-admit criteria or `—` |
-| 8 | Student Meets Program Req? | `entry["student_meets_program_req"]` | `resolve_program_admit()` | Profile vs mid-50% or direct-admit rules |
-| 9 | Program Admit Notes | `entry["program_admit_notes"]` | `resolve_program_admit()` | Defaults + cache `admit_profile.program_admit_notes` |
-| 10 | GPA Mid-50% Range | `entry["gpa_range_display"]` or `—` | `resolve_admit_stats()` | Cache `admit_stats` or blank |
-| 11 | GPA vs Mid-50% | `entry["gpa_position"]` | `mid50_position()` in matcher | Profile GPA vs cache band |
-| 12 | SAT Mid-50% Range | `entry["sat_range_display"]` or `—` | `resolve_admit_stats()` | Cache `admit_stats` or blank |
-| 13 | SAT vs Mid-50% (effective) | `entry["sat_position"]` | `mid50_position()` | Effective SAT vs cache band |
-| 14 | ACT Mid-50% Range | `entry["act_range_display"]` or `—` | `resolve_admit_stats()` | Cache `admit_stats` or blank |
-| 15 | ACT vs Mid-50% (effective) | `entry["act_position"]` | `mid50_position()` | Effective ACT vs cache band |
-| 16 | Early Action Deadline | `deadlines.early_action` | `match_colleges()` → cache overlay | Cache `deadlines.early_action` |
-| 17 | Early Decision Deadline | `deadlines.early_decision` | Same | Cache `deadlines.early_decision` |
-| 18 | Regular Decision Deadline | `deadlines.regular` | Same | Cache `deadlines.regular` |
-| 19 | ED Binding | `Y`/`N` from ED deadline + `early_decision_available` | `build_row()` | Cache `deadlines.ed_available` |
-| 20 | Within Budget | `Y`/`N` from `within_budget` | `tuition_for_student()` vs profile budget | Profile + cache tuition |
-| 21 | Apply Fall 2026 | `apply_recommendation(entry)` | `scripts/build_selection_sheet.py` | Category + excluded + priority interest |
-| 22 | Accept Rate (University General) | `display_pair(name)[0]` | `scripts/acceptance_data.py` | Cache `acceptance_rates.university_general` |
-| 23 | Accept Rate (*Program*) | `display_pair(name)[1]` | `accept_rate_program_column_label(major)` + `acceptance_data.py` | Cache `acceptance_rates.business_program` (+ secondary display) |
-| 24 | Business Program Notes | Matcher `reasons` / `exclusion_reasons` heuristics | `build_row()` | Cache `business_program_note` via matcher reasons |
-| 25 | Accept Rate Source | `display_pair(name)[2]` | `scripts/acceptance_data.py` | Cache rate `source_url` / `source_note` |
-| 26 | US News Rankings Source | `entry["us_news_rankings_source"]` | `college_rankings()` | Cache root `rankings_source` |
+| 5 | Avg Net Price (Scorecard) | `entry["avg_net_price"]` | `match_colleges()` → catalog `avg_net_price` | Scorecard `latest.cost.avg_net_price` |
+| 6 | Fit Category | `entry["category"]` or `Excluded` | `classify_fit()` | Matcher (uses cache rates + mid-50%) |
+| 7 | Program Admit Type | `entry["program_admit_type"]` | `resolve_program_admit()` | `program_admit.py` defaults + cache `admit_profile` |
+| 8 | Program Requirements | `entry["program_requirements"]` | `resolve_program_admit()` | Direct-admit criteria or `—` |
+| 9 | Student Meets Program Req? | `entry["student_meets_program_req"]` | `resolve_program_admit()` | Profile vs mid-50% or direct-admit rules |
+| 10 | Program Admit Notes | `entry["program_admit_notes"]` | `resolve_program_admit()` | Defaults + cache `admit_profile.program_admit_notes` |
+| 11 | GPA Mid-50% Range | `entry["gpa_range_display"]` or `—` | `resolve_admit_stats()` | Cache `admit_stats` or blank |
+| 12 | GPA vs Mid-50% | `entry["gpa_position"]` | `mid50_position()` in matcher | Profile GPA vs cache band |
+| 13 | SAT Mid-50% Range | `entry["sat_range_display"]` or `—` | `resolve_admit_stats()` | Cache `admit_stats` or blank |
+| 14 | SAT vs Mid-50% (effective) | `entry["sat_position"]` | `mid50_position()` | Effective SAT vs cache band |
+| 15 | ACT Mid-50% Range | `entry["act_range_display"]` or `—` | `resolve_admit_stats()` | Cache `admit_stats` or blank |
+| 16 | ACT vs Mid-50% (effective) | `entry["act_position"]` | `mid50_position()` | Effective ACT vs cache band |
+| 17 | Early Action Deadline | `deadlines.early_action` | `match_colleges()` → cache overlay | Cache `deadlines.early_action` |
+| 18 | Early Decision Deadline | `deadlines.early_decision` | Same | Cache `deadlines.early_decision` |
+| 19 | Regular Decision Deadline | `deadlines.regular` | Same | Cache `deadlines.regular` |
+| 20 | ED Binding | `Y`/`N` from ED deadline + `early_decision_available` | `build_row()` | Cache `deadlines.ed_available` |
+| 21 | Within Budget | `Y`/`N` from `within_budget` | `tuition_for_student()` vs profile budget | Profile + cache tuition |
+| 22 | Apply Fall 2026 | `apply_recommendation(entry)` | `scripts/build_selection_sheet.py` | Category + excluded + priority interest |
+| 23 | Accept Rate (University General) | `display_pair(name)[0]` | `scripts/acceptance_data.py` | Cache `acceptance_rates.university_general` |
+| 24 | Accept Rate (*Program*) | `display_pair(name)[1]` | `accept_rate_program_column_label(major)` + `acceptance_data.py` | Cache `acceptance_rates.business_program` (+ secondary display) |
+| 25 | Business Program Notes | Matcher `reasons` / `exclusion_reasons` heuristics | `build_row()` | Cache `business_program_note` via matcher reasons |
+| 26 | Accept Rate Source | `display_pair(name)[2]` | `scripts/acceptance_data.py` | Cache rate `source_url` / `source_note` |
+| 27 | US News Rankings Source | `entry["us_news_rankings_source"]` | `college_rankings()` | Cache root `rankings_source` |
 
 ### Columns intentionally blank today
 - **10–15 (mid-50%)** — Blank (`—`) for schools with no official program-level band in cache (by design).
@@ -323,8 +324,7 @@ Column order is defined in `build_selection_sheet.py` → `sheet_columns()`. Col
 
 | Tab | Source function | Content |
 |-----|-----------------|---------|
-| `College Selection - {Major}` | `write_xlsx()` | Profile header block + 26-column match table |
-| `College Selection - {Alternate Major}` | `write_xlsx()` | Same layout for alternate major — only present when `alternate_major` is set in profile |
+| `College Selection - {Major}` | `write_xlsx()` | Profile header block + 27-column match table |
 
 ### Matcher notes
 
@@ -344,7 +344,7 @@ Column order is defined in `build_selection_sheet.py` → `sheet_columns()`. Col
 | `scripts/college_research.py` | Load cache, `apply_to_college()`, rankings helpers, sort key for sheet order |
 | `scripts/program_admit.py` | Program admit display modes, direct-admit evaluation, mid-50% "Meets?" summary |
 | `scripts/acceptance_data.py` | Cache-first acceptance rates; `rate_for_fit()` for matcher; `display_pair()` for sheet |
-| `scripts/build_selection_sheet.py` | XLSX with major-named tab(s); optional alternate major tab |
+| `scripts/build_selection_sheet.py` | XLSX with major-named tab |
 | `scripts/build_gap_analysis.py` | Gap analysis HTML from match report |
 | `scripts/discover_colleges.py` | Scorecard API + preferred schools → catalog |
 | `scripts/cache_sync.py` | Ensure catalog school has cache stub |

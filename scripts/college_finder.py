@@ -352,6 +352,8 @@ def classify_fit(
     sat: int,
     acceptance_rate: float,
     stats: Optional[Dict[str, Any]] = None,
+    *,
+    gpa_weighted: Optional[float] = None,
 ) -> str:
     stats = stats or resolve_admit_stats(college)
     gpa_median = stats["gpa_median"]
@@ -388,6 +390,10 @@ def classify_fit(
         score -= 1
     else:
         score -= 2
+
+    # Rigor bonus: weighted GPA significantly above unweighted signals strong coursework
+    if gpa_weighted is not None and (gpa_weighted - gpa) >= 0.3:
+        score += 1
 
     if acceptance_rate >= 0.65 and score >= 0:
         return "Safety"
@@ -463,6 +469,13 @@ def build_reasons(
     if college.business_program_note:
         reasons.append(college.business_program_note)
 
+    gpa_weighted = profile.get("gpa_weighted")
+    if gpa_weighted is not None and (gpa_weighted - gpa) >= 0.3:
+        reasons.append(
+            f"Weighted GPA {gpa_weighted} (+{gpa_weighted - gpa:.2f} above unweighted) — "
+            "rigorous coursework counted in fit scoring."
+        )
+
     if category == "Reach":
         reasons.append("Classified as reach: stats below average and/or highly selective.")
     elif category == "Safety":
@@ -491,7 +504,8 @@ def match_colleges(profile: Dict[str, Any]) -> Dict[str, Any]:
         else:
             rate = rate_val
         stats = resolve_admit_stats(college)
-        category = classify_fit(college, gpa, sat, rate, stats)
+        gpa_weighted = profile.get("gpa_weighted")
+        category = classify_fit(college, gpa, sat, rate, stats, gpa_weighted=gpa_weighted)
         program_admit = resolve_program_admit(college.name, profile, stats, sat, act)
         interested = matches_user_interest(college.name, profile.get("schools_interested_in", []))
 
@@ -510,6 +524,7 @@ def match_colleges(profile: Dict[str, Any]) -> Dict[str, Any]:
             "public_private": college.public_private,
             **college_rankings(college.name),
             "tuition_estimate": tuition,
+            "avg_net_price": cat_meta.get("avg_net_price"),
             "within_budget": budget_ok,
             **stats,
             **program_admit,
@@ -578,9 +593,6 @@ def match_colleges(profile: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
-def match_colleges_for_major(profile: Dict[str, Any], major: str) -> Dict[str, Any]:
-    """Run match_colleges with intended_major overridden — used for alternate major tab."""
-    return match_colleges({**profile, "intended_major": major})
 
 
 def write_markdown(report: Dict[str, Any], path: str) -> None:
