@@ -10,8 +10,6 @@ This document describes the end-to-end pipeline: what reads what, what is hardco
 
 ## Pipeline at a glance
 
-For a full interactive version with plain-English explanations alongside the technical details, open [`docs/diagram-technical.html`](diagram-technical.html) in your browser.
-
 ![Architecture diagram](screenshots/architecture-diagram.png)
 
 > Once the research cache is warm, the entire pipeline runs in pure Python with zero LLM calls. Repeat runs are instant.
