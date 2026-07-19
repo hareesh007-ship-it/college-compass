@@ -20,7 +20,7 @@ This document describes the end-to-end pipeline: what reads what, what is hardco
 
 The college compass is a **deterministic Python pipeline**. It does not call LLMs or re-research colleges on each run. Research lives in `data/college_research_cache.json`; matching and sheet generation are pure Python.
 
-```
+```text
 input/student profile input.xlsx
           │
           ▼
@@ -66,7 +66,7 @@ python3 scripts/validate_cache.py  # validate only
 ### Entry points
 
 | Path | Role |
-|------|------|
+| ------ | ------ |
 | `college-compass` | CLI entry point — `run`, `validate`, `cursor-prompt`, `help` subcommands |
 | `scripts/run.py` | Direct Python entry point — calls `pipeline.run_pipeline()` |
 | `scripts/pipeline.py` | Orchestrates all stages: discover → cache sync → research → match → outputs |
@@ -76,7 +76,7 @@ python3 scripts/validate_cache.py  # validate only
 All Python lives under `scripts/`. Shared path constants are in `scripts/_paths.py` (`ROOT`, `DATA`, `INPUT`, `OUTPUT`).
 
 | File | Role |
-|------|------|
+| ------ | ------ |
 | `_paths.py` | Project root and `input/` / `data/` / `output/` path helpers |
 | `pipeline.py` | Full pipeline orchestration (`discover → sync → research → match → outputs`) |
 | `run.py` | Thin entry point — calls `pipeline.run_pipeline()` |
@@ -103,7 +103,7 @@ All Python lives under `scripts/`. Shared path constants are in `scripts/_paths.
 ### Inputs (`input/`)
 
 | File | Role | Consumed by |
-|------|------|-------------|
+| ------ | ------ | ------------- |
 | `student profile input.xlsx` | GPA, tests, budget, major, state, preferences, application cycle | `load_profile.py` → pipeline |
 
 Excel is the **only** supported input format. There is no JSON profile fallback.
@@ -113,7 +113,7 @@ HS historical outcomes (`high_school_outcomes.json`) deferred — see [`ENHANCEM
 ### Data (`data/`)
 
 | File | Role | Status |
-|------|------|--------|
+| ------ | ------ | -------- |
 | `college_research_cache.json` | **Single source of truth** — rankings, tuition, mid-50%, acceptance rates, deadlines, `admit_profile` overrides | Active |
 | `colleges/catalog.json` | Discovered + preferred schools — pipeline source for school list | Active; regenerated on each run |
 | `acceptance_rates.json` | Legacy acceptance-rate copy | Fallback only; `acceptance_data.py` reads cache first |
@@ -122,7 +122,7 @@ HS historical outcomes (`high_school_outcomes.json`) deferred — see [`ENHANCEM
 ### Outputs (`output/`)
 
 | File | Producer | Notes |
-|------|----------|-------|
+| ------ | ---------- | ------- |
 | `college_matches.json` | `college_finder.py` (refreshed by pipeline) | Full match report per college |
 | `college_matches.md` | `college_finder.py` | Human-readable match summary |
 | `{FirstName} - US College Selection.xlsx` | `build_selection_sheet.py` | One tab: `College Selection - {Major}` |
@@ -137,7 +137,7 @@ Output filenames are parameterized from the profile first name via `output_paths
 Optional free/offline tier using Ollama — **not part of the main pipeline**.
 
 | File | Role |
-|------|------|
+| ------ | ------ |
 | `extract_college_draft.py` | Paste admissions text → draft cache-schema JSON (stdout only, no cache writes) |
 | `README.md` | Install guide, model options, workflow |
 
@@ -233,7 +233,7 @@ flowchart TB
 ### Hardcoded in Python (change requires code edit)
 
 | Item | Location | Notes |
-|------|----------|-------|
+| ------ | ---------- | ------- |
 | Dynamic college catalog | `discover_colleges.py` → `data/colleges/catalog.json` | Driven by profile + Scorecard API; preferred schools always included |
 | Seed `College` dataclass fields | `college_finder.py` → `COLLEGES` | Baseline tuition, point estimates, deadlines — overwritten by cache when present |
 | MN reciprocity states | `college_finder.py` → `MN_RECIPROCITY_STATES` | WI, ND, SD publics for MN residents; imported by `catalog_bootstrap.py` |
@@ -250,7 +250,7 @@ flowchart TB
 ### Read from cache (edit via `docs/RESEARCH_AGENT.md`)
 
 | Item | Cache path | Applied by |
-|------|------------|------------|
+| ------ | ------------ | ------------ |
 | US News rankings (national, business, entrepreneurship, regional) | `colleges.*.rankings` | `college_rankings()`, sheet col 3 |
 | Rankings source note | root `rankings_source` | Sheet col 29 |
 | Tuition in/out of state | `colleges.*.tuition` | `apply_to_college()` → `tuition_for_student()` |
@@ -283,7 +283,7 @@ Schools whose key exactly matches a catalog entry in `data/colleges/catalog.json
 ## 6. Legacy files
 
 | File | Status | Behavior today | Retirement plan |
-|------|--------|----------------|-----------------|
+| ------ | -------- | ---------------- | ----------------- |
 | `data/college_research_cache.json` | **Authoritative** | All active research | Keep; only write target for agents |
 | `data/acceptance_rates.json` | Legacy | `acceptance_data.load_acceptance_data()` uses cache first; reads this file only if cache import fails | Optional merge into cache; then delete |
 | `data/us_news_rankings_2026.json` | Deprecated | Empty stub with `_deprecated` note | Safe to ignore; rankings only in cache |
@@ -296,7 +296,7 @@ Schools whose key exactly matches a catalog entry in `data/colleges/catalog.json
 Column order is defined in `build_selection_sheet.py` → `sheet_columns()`. Column 3 header is **major-aware** (e.g. "US News — Entrepreneurship Rank (2026)" for an entrepreneurship major).
 
 | # | Column header | Sheet value source | Python origin | Primary data |
-|---|---------------|-------------------|---------------|--------------|
+| --- | --------------- | ------------------- | --------------- | -------------- |
 | 1 | University Name | `entry["name"]` | `match_colleges()` | `COLLEGES[].name` |
 | 2 | Public/Private | `entry["public_private"]` | `match_colleges()` | Seed (not in cache) |
 | 3 | US News — *Program* Rank (2026) | `program_rank_for_major(entry, major)` | `build_row()` → `college_research.py` | Cache `rankings.*` |
@@ -331,7 +331,7 @@ Column order is defined in `build_selection_sheet.py` → `sheet_columns()`. Col
 ### Excel tabs
 
 | Tab | Source function | Content |
-|-----|-----------------|---------|
+| ----- | ----------------- | --------- |
 | `College Selection - {Major}` | `write_xlsx()` | Profile header block + 27-column match table |
 
 ### Matcher notes
@@ -346,7 +346,7 @@ Column order is defined in `build_selection_sheet.py` → `sheet_columns()`. Col
 ## 8. Module reference
 
 | Module | Responsibility |
-|--------|----------------|
+| -------- | ---------------- |
 | `scripts/pipeline.py` | End-to-end orchestration: discover → sync → research → match → outputs |
 | `scripts/college_finder.py` | Profile load, `COLLEGES` seed, filters, tuition/reciprocity, fit classification, match report JSON/MD |
 | `scripts/college_research.py` | Load cache, `apply_to_college()`, rankings helpers, sort key for sheet order |
@@ -368,7 +368,7 @@ Column order is defined in `build_selection_sheet.py` → `sheet_columns()`. Col
 Defaults in `program_admit.py`; cache `admit_profile.display_mode` overrides.
 
 | Mode | Example schools | Sheet behavior |
-|------|-----------------|----------------|
+| ------ | ----------------- | ---------------- |
 | `mid50_band` | Carlson, Purdue, UIUC Gies | Requirements `—`; Meets? from mid-50% bands |
 | `mid50_partial` | Wisconsin, UIC, St Thomas | Same; notes explain missing GPA band |
 | `direct_admit_criteria` | Iowa Tippie | Requirements show GPA/test mins; Meets? Yes/Partial/No |
@@ -408,7 +408,7 @@ Already completed:
 ## Related documents
 
 | Document | Purpose |
-|----------|---------|
+| ---------- | --------- |
 | [`ENHANCEMENT.md`](ENHANCEMENT.md) | Deferred features |
 | [`RESEARCH_AGENT.md`](RESEARCH_AGENT.md) | Cache schema, scope commands, validation gate |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | This document — pipeline, data model, module reference |
