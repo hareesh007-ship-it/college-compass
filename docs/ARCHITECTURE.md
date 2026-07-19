@@ -10,81 +10,11 @@ This document describes the end-to-end pipeline: what reads what, what is hardco
 
 ## Pipeline at a glance
 
-| Step | In plain English | What's happening technically |
-| ---- | ---------------- | ----------------------------- |
-| **1. Read your profile** | Fill in an Excel sheet with GPA, test scores, budget, state, and major. Optionally drop in a transcript or resume PDF — the tool reads them and fills any gaps you left blank. | `load_profile.py` reads the Excel. If PDFs/docs exist in `input/`, `extract_student_docs.py` runs an LLM to extract fields like GPA, courses, and activities into any blank cells. Excel values always win. |
-| **2. Find matching schools** | Searches a government database of thousands of colleges, filtered by your state, budget, and major. Describe what you're looking for in plain text and it adds suggestions automatically. | `discover_colleges.py` queries the College Scorecard API → `data/colleges/catalog.json`. `llm_discover.py` (optional) turns `any_other_preference` free text into school names — skipped if blank. |
-| **3. Research each school** | Visits each school's admissions website and pulls out test score ranges, acceptance rates, and deadlines. Saved locally so it never needs to do it again. | `auto_research_colleges.py` fetches each admissions page and passes it to an LLM to extract structured data into `data/college_research_cache.json`. Cached schools are skipped entirely. |
-| **4. Classify each school** | Pure math, no AI. GPA and test scores compared to each school's admit profile → Safety, Target, or Reach. | `college_finder.py` runs deterministic Python rules. `acceptance_data.py` resolves accept rates. `program_admit.py` evaluates program-specific requirements. No LLM. |
-| **5. Generate outputs** | 27-column Excel sheet + printable gap analysis HTML land in the output folder. | `build_selection_sheet.py` writes the Excel. `build_gap_analysis.py` produces the HTML. Both are pure Python. |
-
-> Once the research cache is warm, the entire pipeline runs in pure Python with zero LLM calls. Repeat runs are instant.
-
-## Pipeline flowchart
-
-```mermaid
-flowchart TD
-    classDef input  fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
-    classDef llm    fill:#fef3c7,stroke:#f59e0b,color:#78350f
-    classDef python fill:#dcfce7,stroke:#22c55e,color:#14532d
-    classDef cache  fill:#f3f4f6,stroke:#6b7280,color:#111827
-    classDef output fill:#fce7f3,stroke:#ec4899,color:#831843
-    classDef api    fill:#ede9fe,stroke:#8b5cf6,color:#4c1d95
-
-    XLS["students/name/input/<br/>student profile input.xlsx"]:::input
-    DOCS["students/name/input/<br/>transcript.pdf · resume.docx · *.txt<br/>(optional)"]:::input
-    EXT["extract_student_docs.py<br/>🤖 LLM fills blank profile fields<br/>Skipped if no docs in input/"]:::llm
-
-    SC["College Scorecard API<br/>(free government API)"]:::api
-    DISC["discover_colleges.py<br/>Python — filters by state, budget, major"]:::python
-    LLD["llm_discover.py<br/>🤖 LLM turns any_other_preference text into school names<br/>Skipped if field is blank"]:::llm
-    CAT["data/colleges/catalog.json<br/>(generated school list)"]:::cache
-
-    WEB["College admissions pages<br/>(web fetch)"]:::api
-    RES["auto_research_colleges.py<br/>🤖 LLM extracts mid-50% bands, accept rates, deadlines<br/>Skipped for cached schools"]:::llm
-    CACHE["data/college_research_cache.json<br/>Shared cache — single source of truth"]:::cache
-
-    subgraph matcher ["Pure Python matcher — no LLM"]
-        direction LR
-        CR["college_research.py"]:::python
-        AD["acceptance_data.py"]:::python
-        PA["program_admit.py"]:::python
-        CF["college_finder.py<br/>Safety / Target / Reach"]:::python
-    end
-
-    BSS["build_selection_sheet.py"]:::python
-    BGA["build_gap_analysis.py"]:::python
-    OUT1["FirstName - US College Selection.xlsx"]:::output
-    OUT2["FirstName - College Prep Gap Analysis.html"]:::output
-
-    DOCS -- "if docs present" --> EXT
-    EXT -- "fills blank fields" --> XLS
-    XLS --> DISC
-    SC --> DISC
-    DISC --> CAT
-    DISC --> LLD
-    LLD -- "adds suggested schools" --> CAT
-    CAT --> RES
-    WEB --> RES
-    RES --> CACHE
-    CAT -. "cached schools skip research" .-> CACHE
-    CACHE --> CR
-    XLS --> CF
-    CR --> CF
-    AD --> CF
-    PA --> CF
-    CF --> BSS
-    CF --> BGA
-    XLS --> BSS
-    BSS --> OUT1
-    BGA --> OUT2
-```
-
-**Legend:** 🤖 Yellow — LLM-assisted (optional) · Green — Pure Python · Purple — External APIs · Pink — Outputs
-
-For a richer interactive version with plain-English explanations side by side, open [`docs/diagram-technical.html`](diagram-technical.html) in your browser.
+For a full interactive version with plain-English explanations alongside the technical details, open [`docs/diagram-technical.html`](diagram-technical.html) in your browser.
 
 ![Architecture diagram](screenshots/architecture-diagram.png)
+
+> Once the research cache is warm, the entire pipeline runs in pure Python with zero LLM calls. Repeat runs are instant.
 
 ---
 
