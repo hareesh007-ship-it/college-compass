@@ -217,7 +217,7 @@ def _call_anthropic(prompt: str) -> Optional[Dict[str, Any]]:
     if not key:
         return None
     body = json.dumps({
-        "model": os.environ.get("ANTHROPIC_MODEL", "claude-3-haiku-20240307"),
+        "model": os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001"),
         "max_tokens": 1024,
         "system": SYSTEM_PROMPT,
         "messages": [{"role": "user", "content": prompt}],
@@ -236,7 +236,11 @@ def _call_anthropic(prompt: str) -> Optional[Dict[str, Any]]:
         with urllib.request.urlopen(req, timeout=60) as resp:
             payload = json.loads(resp.read().decode("utf-8"))
         return _parse_json(payload["content"][0]["text"])
-    except (urllib.error.URLError, KeyError, IndexError):
+    except urllib.error.HTTPError as e:
+        print(f"  [auto-research] Anthropic API error {e.code}: {e.read().decode('utf-8', errors='replace')[:200]}")
+        return None
+    except (urllib.error.URLError, KeyError, IndexError) as e:
+        print(f"  [auto-research] Anthropic call failed: {e}")
         return None
 
 
