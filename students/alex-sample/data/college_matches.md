@@ -9,8 +9,8 @@
 
 ## Summary
 
-- **Safety (17):** Ohio Northern University, University of Wisconsin-La Crosse, University of Wisconsin-Eau Claire, University of Wisconsin-Stout, University of Wisconsin-Whitewater, University of Wisconsin-Platteville, University of Wisconsin-Stevens Point, University of Wisconsin-River Falls, University of Wisconsin-Green Bay, University of Wisconsin-Parkside, University of Wisconsin-Superior, Miami University-Oxford, Kent State University at Kent, University of Toledo, University of Wisconsin-Milwaukee, University of Wisconsin-Oshkosh, North Dakota State University-Main Campus
-- **Target (1):** Western Reserve Academy
+- **Safety (18):** Ohio Northern University, University of Wisconsin-La Crosse, University of Wisconsin-Eau Claire, University of Wisconsin-Stout, University of Wisconsin-Whitewater, University of Wisconsin-Platteville, University of Wisconsin-Stevens Point, University of Wisconsin-River Falls, University of Wisconsin-Green Bay, Youngstown State University, University of Wisconsin-Parkside, University of Wisconsin-Superior, Miami University-Oxford, Kent State University at Kent, University of Toledo, University of Wisconsin-Milwaukee, University of Wisconsin-Oshkosh, North Dakota State University-Main Campus
+- **Target (2):** Western Reserve Academy, Shawnee State University
 - **Reach (0):** None
 
 ## Your stated interests
@@ -121,6 +121,17 @@ Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
 - Discovered via scorecard; confirm program fit.
 - Classified as safety: stats competitive and acceptance rate relatively high.
 
+### Youngstown State University
+Regional / unranked (national) | Public | Ohio | Tuition ~$11,113 | Accept ~84.5%
+Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
+- Your GPA 3.45 (no published mid-50% range for this school).
+- Your effective SAT 1250 (max of SAT 1180 / ACT 26 equiv) (no published mid-50% range).
+- Your ACT 26 (no published mid-50% range).
+- Relevant acceptance rate: 84.5% (University-wide (Scorecard))
+- In-state tuition $11,113/year — Ohio resident.
+- Discovered via user_preferred; confirm program fit.
+- Classified as safety: stats competitive and acceptance rate relatively high.
+
 ### University of Wisconsin-Parkside
 Regional / unranked (national) | Public | Wisconsin | Tuition ~$17,429 | Accept ~75.4%
 Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
@@ -221,12 +232,20 @@ Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
 - In-state tuition $0/year — Ohio resident.
 - Discovered via user_preferred; confirm program fit.
 
+### Shawnee State University
+Regional / unranked (national) | Public | Ohio | Tuition ~$10,626 | Accept ~50.0%
+Deadlines — EA: N/A | ED: N/A | Regular: See admissions site
+- Your GPA 3.45 (no published mid-50% range for this school).
+- Your effective SAT 1250 (max of SAT 1180 / ACT 26 equiv) (no published mid-50% range).
+- Your ACT 26 (no published mid-50% range).
+- Relevant acceptance rate: 50.0% (Not yet researched)
+- In-state tuition $10,626/year — Ohio resident.
+- Discovered via user_preferred; confirm program fit.
+
 ## Excluded (region, budget, or program fit)
 
 - **Case Western Reserve University:** Tuition $66,608 exceeds budget $25,000
 - **Ashland University:** Tuition $31,210 exceeds budget $25,000
-- **John Carroll University:** Tuition $50,500 exceeds budget $25,000
-- **Tiffin University:** Sticker $34,790 and avg net price $26,500 both exceed budget $25,000
 
 ## Recommended next steps (Fall 2026 application cycle)
 

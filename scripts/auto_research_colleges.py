@@ -212,12 +212,25 @@ def _call_openai(prompt: str) -> Optional[Dict[str, Any]]:
         return None
 
 
+ANTHROPIC_DEFAULT_MODEL = "claude-haiku-4-5-20251001"
+
+# Valid Anthropic model prefixes — guards against shell env leaking claude-sonnet-latest etc.
+_VALID_ANTHROPIC_PREFIXES = ("claude-haiku", "claude-sonnet", "claude-opus", "claude-fable")
+
+
+def _anthropic_model() -> str:
+    model = os.environ.get("ANTHROPIC_MODEL", "").strip()
+    if model and any(model.startswith(p) for p in _VALID_ANTHROPIC_PREFIXES) and model != "claude-sonnet-latest":
+        return model
+    return ANTHROPIC_DEFAULT_MODEL
+
+
 def _call_anthropic(prompt: str) -> Optional[Dict[str, Any]]:
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not key:
         return None
     body = json.dumps({
-        "model": os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001"),
+        "model": _anthropic_model(),
         "max_tokens": 1024,
         "system": SYSTEM_PROMPT,
         "messages": [{"role": "user", "content": prompt}],

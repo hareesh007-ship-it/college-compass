@@ -2133,6 +2133,55 @@
         ],
         "scorecard_id": 206048
       }
+    },
+    "University of Minnesota - Carlson School of Management": {
+      "researched_at": "2026-07-19",
+      "rankings": {
+        "national_university": 59,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": null,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": null,
+        "out_of_state": null,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/university-of-minnesota-twin-cities-3969/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://collegescorecard.ed.gov/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://collegescorecard.ed.gov/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-07-19",
+        "source_urls": [
+          "https://collegescorecard.ed.gov/",
+          "https://www.usnews.com/best-colleges/university-of-minnesota-twin-cities-3969/overall-rankings"
+        ],
+        "scorecard_id": null
+      }
     }
   },
   "last_updated": "2026-07-19"

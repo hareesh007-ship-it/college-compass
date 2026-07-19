@@ -52,7 +52,7 @@ def api_key() -> str:
             "     School discovery will use a shared demo key that is heavily rate-limited.\n"
             "     You may see very few schools, empty results, or HTTP 429 errors.\n"
             "     Get a free key in 30 seconds: https://api.data.gov/signup/\n"
-            "     Then add it to your .env file: SCORECARD_API_KEY=your_key\n"
+            "     Then add SCORECARD_API_KEY=your_key to your env.template-derived .env file.\n"
         )
     return key or "DEMO_KEY"
 
