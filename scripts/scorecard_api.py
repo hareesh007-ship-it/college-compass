@@ -36,12 +36,25 @@ DEFAULT_FIELDS = [
 ]
 
 
+_scorecard_key_warned = False
+
+
 def api_key() -> str:
-    return (
+    global _scorecard_key_warned
+    key = (
         os.environ.get("SCORECARD_API_KEY", "").strip()
         or os.environ.get("COLLEGE_SCORECARD_API_KEY", "").strip()
-        or "DEMO_KEY"
     )
+    if not key and not _scorecard_key_warned:
+        _scorecard_key_warned = True
+        print(
+            "\n  ⚠️  WARNING: SCORECARD_API_KEY is not set in your .env file.\n"
+            "     School discovery will use a shared demo key that is heavily rate-limited.\n"
+            "     You may see very few schools, empty results, or HTTP 429 errors.\n"
+            "     Get a free key in 30 seconds: https://api.data.gov/signup/\n"
+            "     Then add it to your .env file: SCORECARD_API_KEY=your_key\n"
+        )
+    return key or "DEMO_KEY"
 
 
 def _get(params: Dict[str, Any], *, timeout: int = 15, retries: int = 3) -> Dict[str, Any]:

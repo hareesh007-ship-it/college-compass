@@ -2,6 +2,7 @@
 .env
 .env.local
 *.env
+# env.template is safe to commit — all values are empty placeholders
 
 # --- Python ---
 __pycache__/

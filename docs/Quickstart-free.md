@@ -2,6 +2,8 @@
 
 **Works on macOS, Linux, and Windows. No API key needed.**
 
+> **New to this?** If you don't have Python or Git installed yet, start here first: [Install-prerequisites.md](Install-prerequisites.md)
+
 Research assist runs locally via [Ollama](https://ollama.com/). No OpenAI or Anthropic subscription required. Matcher and sheet generation are pure Python.
 
 ---
@@ -71,13 +73,29 @@ OLLAMA_MODEL=qwen2.5:3b
 
 ## 3. Add a free Scorecard key (recommended)
 
-School discovery uses the College Scorecard API. Without a key it falls back to a shared demo key that is heavily rate-limited — broad discovery queries may return few or no results, or fail with HTTP 429 errors. A free personal key takes 30 seconds to get and removes that limit:
+> **⚠️ Important:** Without this key, school discovery falls back to a shared demo key that is heavily rate-limited. You will likely see very few schools or empty results. The tool will warn you at runtime if the key is missing.
+
+A free personal key takes 30 seconds to get and removes that limit.
+
+**macOS / Linux:**
 
 ```bash
-cp .env.example .env
-# edit .env:
+cp env.template .env
+```
+
+**Windows (Command Prompt):**
+
+```bat
+copy env.template .env
+```
+
+Then open `.env` in any text editor (Notepad works) and fill in your key:
+
+```text
 SCORECARD_API_KEY=your_key_from_api.data.gov
 ```
+
+> `env.template` is a plain visible file in the repo root — no hidden file settings needed.
 
 Get a key: [api.data.gov/signup](https://api.data.gov/signup/)
 

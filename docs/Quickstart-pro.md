@@ -2,6 +2,8 @@
 
 **Works on macOS, Linux, and Windows. Requires an OpenAI or Anthropic API key.**
 
+> **New to this?** If you don't have Python or Git installed yet, start here first: [Install-prerequisites.md](Install-prerequisites.md)
+
 Auto-research runs via your API key. No Ollama, no model download. Matcher and sheet generation are pure Python.
 
 ---
@@ -48,13 +50,27 @@ pip install -e ".[pro]"
 
 ## 2. Configure your API key
 
+**macOS / Linux:**
+
 ```bash
-cp .env.example .env
-# edit .env:
+cp env.template .env
+```
+
+**Windows (Command Prompt):**
+
+```bat
+copy env.template .env
+```
+
+Then open `.env` in any text editor (Notepad works) and fill in your key:
+
+```text
 ANTHROPIC_API_KEY=sk-ant-...    # preferred
 # or
 OPENAI_API_KEY=sk-...
 ```
+
+> `env.template` is a plain visible file in the repo root — no hidden file settings needed.
 
 The pipeline auto-detects whichever key is present. If both are set, Anthropic is used.
 
@@ -67,7 +83,9 @@ Get a key:
 
 ## 3. Add a free Scorecard key (recommended)
 
-School discovery uses the College Scorecard API. Without a key it falls back to a shared demo key that is heavily rate-limited — broad discovery queries may return few or no results, or fail with HTTP 429 errors. A free personal key takes 30 seconds to get and removes that limit:
+> **⚠️ Important:** Without this key, school discovery falls back to a shared demo key that is heavily rate-limited. You will likely see very few schools or empty results. The tool will warn you at runtime if the key is missing.
+
+A free personal key takes 30 seconds to get and removes that limit.
 
 ```bash
 # add to .env:

@@ -155,7 +155,8 @@ flowchart TD
 | Requirement | Detail |
 | --- | --- |
 | **OS** | macOS, Linux, or Windows |
-| **Python** | 3.9+ |
+| **Python 3.9+** | Check: `python --version` · [Install guide](docs/Install-prerequisites.md#1-install-python) |
+| **Git** | Check: `git --version` · [Install guide](docs/Install-prerequisites.md#2-install-git) |
 | **Setup time** | ~15 minutes |
 | **School discovery** | Free [College Scorecard API key](https://api.data.gov/signup/) |
 | **Free path** | [Ollama](https://ollama.com/) + ~2 GB local model |
@@ -245,26 +246,43 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 pip install -e ".[pro]"
 ```
 
-Add your key to `.env` at the repo root:
+Add your key to `.env` at the repo root.
+
+**macOS / Linux:**
 
 ```bash
-cp .env.example .env
-# edit .env:
+cp env.template .env
+```
+
+**Windows (Command Prompt):**
+
+```bat
+copy env.template .env
+```
+
+Then open `.env` in any text editor (Notepad on Windows works fine) and fill in your key:
+
+```text
 ANTHROPIC_API_KEY=sk-ant-...    # preferred
 # or
 OPENAI_API_KEY=sk-...
 ```
 
-> **Every time you open a new terminal**, activate the venv first:  
-> macOS/Linux: `source .venv/bin/activate`  
-> Windows Command Prompt: `.venv\Scripts\activate`  
-> Windows PowerShell: `.venv\Scripts\Activate.ps1`
+> `env.template` is a plain visible file in the repo root — no hidden file settings needed.
+
+**Every time you open a new terminal**, activate the venv first:
+
+- macOS/Linux: `source .venv/bin/activate`
+- Windows Command Prompt: `.venv\Scripts\activate`
+- Windows PowerShell: `.venv\Scripts\Activate.ps1`
 
 ---
 
 ## Add a free Scorecard key (both paths)
 
-Without a key, discovery falls back to a shared demo key that is heavily rate-limited — broad queries may return few or no results. A free personal key takes 30 seconds to get:
+> **⚠️ Important:** Without this key, school discovery falls back to a shared demo key that is heavily rate-limited. You will likely see very few schools or empty results. The tool will warn you at runtime if the key is missing.
+
+A free personal key takes 30 seconds to get. Add it to your `.env` file:
 
 ```bash
 SCORECARD_API_KEY=your_key_from_api.data.gov
@@ -280,9 +298,16 @@ The repo ships with a fictional student (`alex-sample`) so you can verify your i
 
 **Free path:**
 
+Open **terminal 1** and keep it running:
+
 ```bash
-ollama serve                                          # terminal 1 — keep open
-college-compass-free --student alex-sample run        # terminal 2
+ollama serve
+```
+
+Open **terminal 2** and run the pipeline:
+
+```bash
+college-compass-free --student alex-sample run
 ```
 
 **Pro path:**
@@ -365,6 +390,7 @@ All paths are under `students/<name>/`:
 
 | Doc | Audience |
 | --- | --- |
+| [`docs/Install-prerequisites.md`](docs/Install-prerequisites.md) | First-timers — install Python and Git |
 | [`docs/Quickstart-free.md`](docs/Quickstart-free.md) | Free path — full setup walkthrough |
 | [`docs/Quickstart-pro.md`](docs/Quickstart-pro.md) | Pro path — full setup walkthrough |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Developers — pipeline, data model, module reference, architecture diagram |
