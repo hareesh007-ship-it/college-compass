@@ -1890,19 +1890,19 @@
       "admit_stats": {}
     },
     "Western Reserve Academy": {
-      "researched_at": "2026-06-28",
+      "researched_at": "2026-07-19",
       "rankings": {
-        "national_university": null,
+        "national_university": 51,
         "undergrad_business": null,
         "entrepreneurship": null,
         "regional_universities_midwest": null,
-        "notes": "Scorecard stub — US News ranks filled by research step when available"
+        "notes": "US News Best Colleges 2026 (auto fetch)"
       },
       "tuition": {
         "in_state": null,
         "out_of_state": null,
         "year": "Scorecard latest",
-        "source_url": "https://collegescorecard.ed.gov/"
+        "source_url": "https://www.usnews.com/best-colleges/case-western-reserve-university-3024/paying"
       },
       "acceptance_rates": {
         "university_general": {
@@ -1928,11 +1928,12 @@
       },
       "business_program_note": "Discovered via user_preferred; confirm program fit.",
       "research_method": {
-        "backend": "scorecard",
-        "scope": "catalog sync",
-        "researched_at": "2026-06-28",
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-07-19",
         "source_urls": [
-          "https://collegescorecard.ed.gov/"
+          "https://collegescorecard.ed.gov/",
+          "https://www.usnews.com/best-colleges/case-western-reserve-university-3024/overall-rankings"
         ],
         "scorecard_id": null
       }
@@ -2083,6 +2084,55 @@
         "scorecard_id": 204635
       },
       "admit_stats": {}
+    },
+    "Tiffin University": {
+      "researched_at": "2026-07-19",
+      "rankings": {
+        "national_university": null,
+        "undergrad_business": null,
+        "entrepreneurship": null,
+        "regional_universities_midwest": 138,
+        "notes": "US News Best Colleges 2026 (auto fetch)"
+      },
+      "tuition": {
+        "in_state": 34790,
+        "out_of_state": 34790,
+        "year": "Scorecard latest",
+        "source_url": "https://www.usnews.com/best-colleges/tiffin-university-3121/paying"
+      },
+      "acceptance_rates": {
+        "university_general": {
+          "value": 0.8005,
+          "display": "80.0%",
+          "label": "University-wide (Scorecard)",
+          "source_url": "https://www.tiffin.edu/",
+          "source_note": "College Scorecard (auto)"
+        },
+        "business_program": {
+          "value": null,
+          "display": "Not yet researched",
+          "label": "Program-specific — not yet researched",
+          "source_url": "https://www.tiffin.edu/",
+          "source_note": "Auto stub — run scoped research for program-level rate"
+        }
+      },
+      "deadlines": {
+        "early_action": null,
+        "early_decision": null,
+        "regular": null,
+        "ed_available": false
+      },
+      "business_program_note": "Discovered via user_preferred; confirm program fit.",
+      "research_method": {
+        "backend": "web",
+        "scope": "pipeline auto-research",
+        "researched_at": "2026-07-19",
+        "source_urls": [
+          "https://www.tiffin.edu/",
+          "https://www.usnews.com/best-colleges/tiffin-university-3121/overall-rankings"
+        ],
+        "scorecard_id": 206048
+      }
     }
   },
   "last_updated": "2026-07-19"

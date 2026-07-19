@@ -1,7 +1,7 @@
 # Profile, config, and logging
 
 **Last updated:** 2026-06-28  
-**Related:** [`Quickstart-pro.md`](Quickstart-pro.md) · [`RESEARCH_AGENT.md`](RESEARCH_AGENT.md) · [`TECHNICAL.md`](TECHNICAL.md)
+**Related:** [`Quickstart-pro.md`](Quickstart-pro.md) · [`RESEARCH_AGENT.md`](RESEARCH_AGENT.md) · [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ---
 
@@ -10,7 +10,7 @@
 Each student has an isolated folder under `students/<name>/`. Tool config and secrets live at the repo root.
 
 | Path | Purpose | Secrets? |
-|------|---------|----------|
+| ------ | --------- | ---------- |
 | **`students/<name>/input/student profile input.xlsx`** | **Student profile** — one-tab form with comments | No |
 | `students/<name>/output/` | Deliverables — XLSX, gap HTML | No |
 | `students/<name>/data/` | Intermediate — match report, catalog, logs | No |
@@ -35,7 +35,7 @@ Loader: `scripts/load_profile.py` reads Excel via field map in `scripts/profile_
 ### Required for matcher + sheet
 
 | Field | Type | Used by |
-|-------|------|---------|
+| ------- | ------ | --------- |
 | `name` | string | Sheet header, match report title |
 | `grade` | number | Sheet header |
 | `intended_major` | string | Rank column label, program admit, business filter |
@@ -47,7 +47,7 @@ Loader: `scripts/load_profile.py` reads Excel via field map in `scripts/profile_
 ### Strongly recommended
 
 | Field | Type | Notes |
-|-------|------|-------|
+| ------- | ------ | ------- |
 | `sat` | number \| null | At least one of `sat` or `act` needed for test fit |
 | `act` | number \| `{composite, …}` \| null | Effective score = max(SAT, ACT-equiv) |
 | `preferences.surrounding_states` | string[] | Expands allowed states beyond `regions` |
@@ -86,7 +86,7 @@ Shared tool config at the repo root (not per-student). Created by `install-pro.s
 ```
 
 | Field | Values | Notes |
-|-------|--------|-------|
+| ------- | -------- | ------- |
 | `research_backend` | `cursor` \| `openai` \| `anthropic` \| `local` | `local` reserved for Free path |
 | `logging.enabled` | boolean | `false` disables all `run_log` writes |
 | `logging.path` | path | Relative to **active student folder** (`students/<name>/`) or absolute |
@@ -107,7 +107,7 @@ With the default path, logs write to `students/<name>/data/logs/research_log.jso
 ### Event types
 
 | `event` | When | Typical fields |
-|---------|------|----------------|
+| --------- | ------ | ---------------- |
 | `research` | Agent/API completes scoped research | `backend`, `school`, `scope`, `source_urls[]`, `validator_ok`, `validator_errors`, `validator_warnings`, `notes` |
 | `validate` | After `validate_cache.py` | `ok`, `errors`, `warnings`, `cache_path`, `backend` |
 | `matcher_run` | After `college_finder.py` | `profile_path`, `safety`, `target`, `reach`, `excluded` |
@@ -143,7 +143,7 @@ Optional per-college field in `data/college_research_cache.json`:
 ```
 
 | `backend` | Meaning |
-|-----------|---------|
+| ----------- | --------- |
 | `cursor` | Cursor agent + `RESEARCH_AGENT.md` |
 | `openai` | User OpenAI API |
 | `anthropic` | User Anthropic API |

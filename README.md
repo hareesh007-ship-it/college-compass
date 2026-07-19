@@ -23,19 +23,9 @@ Fill in a student profile — grades, test scores, budget, state, preferred majo
 
 ---
 
-## What it does
-
-Fill in a student Excel profile. Run one command. Get:
-
-- A **Safety / Target / Reach classification** for each matching school
-- A **27-column Excel selection sheet** (rankings, tuition, average net price, fit, deadlines, acceptance rates)
-- A **printable gap analysis HTML** showing where the student stands vs. each school's admit profile
-
-The matcher is deterministic Python — no LLM is called on every run. LLMs are used only to help research and populate the shared `data/college_research_cache.json` once per school.
-
----
-
 ## How it works
+
+![How it works](docs/screenshots/how-it-works.png)
 
 ### Folder structure
 
@@ -121,6 +111,45 @@ The research cache is shared across all students — once a school is researched
 
 ---
 
+## Setup at a glance
+
+```mermaid
+flowchart TD
+    classDef setup fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    classDef free fill:#dcfce7,stroke:#22c55e,color:#14532d
+    classDef pro fill:#fef9c3,stroke:#eab308,color:#713f12
+    classDef shared fill:#f3f4f6,stroke:#6b7280,color:#111827
+    classDef output fill:#fce7f3,stroke:#ec4899,color:#831843
+
+    START(["Start here"]):::setup
+    START --> CLONE["Clone repo + activate venv<br/>git clone ... college-compass<br/>python -m venv .venv<br/>activate venv"]:::setup
+    CLONE --> CHOOSE{Choose your path}
+
+    CHOOSE -- "Free · no API key" --> IF["pip install -e .[free]"]:::free
+    CHOOSE -- "Pro · BYO API key" --> IP["pip install -e .[pro]"]:::pro
+
+    IF --> OLL["Install Ollama + pull model<br/>brew install ollama<br/>ollama pull llama3.2:3b<br/>~2 GB · one-time download"]:::free
+    IP --> KEY["Add to .env<br/>ANTHROPIC_API_KEY=sk-ant-...<br/>or OPENAI_API_KEY=sk-..."]:::pro
+
+    OLL --> SCF["Add to .env<br/>SCORECARD_API_KEY=your-key<br/>free key from api.data.gov"]:::free
+    KEY --> SCP["Add to .env<br/>SCORECARD_API_KEY=your-key<br/>free key from api.data.gov"]:::pro
+
+    SCF --> STU["Copy sample student folder<br/>cp -r students/alex-sample<br/>   students/your-name"]:::shared
+    SCP --> STU
+
+    STU --> INP["Place inputs in students/your-name/input/<br/>student profile input.xlsx  ← required<br/>transcript.pdf               ← optional<br/>resume.docx                  ← optional"]:::shared
+
+    INP --> RUNC{Run the pipeline}
+
+    RUNC -- "Free" --> RF["Keep ollama serve open in terminal 1<br/>college-compass-free --student your-name run"]:::free
+    RUNC -- "Pro" --> RP["college-compass-pro --student your-name run"]:::pro
+
+    RF --> OUT["Outputs in students/your-name/output/<br/>FirstName - US College Selection.xlsx<br/>FirstName - College Prep Gap Analysis.html"]:::output
+    RP --> OUT
+```
+
+---
+
 ## Requirements
 
 | Requirement | Detail |
@@ -143,7 +172,7 @@ Uses [Ollama](https://ollama.com/) to auto-research schools locally. No OpenAI o
 **macOS / Linux:**
 
 ```bash
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python3 -m venv .venv
 source .venv/bin/activate
@@ -153,7 +182,7 @@ pip install -e ".[free]"
 **Windows (Command Prompt):**
 
 ```bat
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python -m venv .venv
 .venv\Scripts\activate
@@ -163,7 +192,7 @@ pip install -e ".[free]"
 **Windows (PowerShell):**
 
 ```powershell
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
@@ -188,7 +217,7 @@ Use your existing OpenAI or Anthropic subscription.
 **macOS / Linux:**
 
 ```bash
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python3 -m venv .venv
 source .venv/bin/activate
@@ -198,7 +227,7 @@ pip install -e ".[pro]"
 **Windows (Command Prompt):**
 
 ```bat
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python -m venv .venv
 .venv\Scripts\activate
@@ -208,7 +237,7 @@ pip install -e ".[pro]"
 **Windows (PowerShell):**
 
 ```powershell
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
@@ -235,7 +264,7 @@ OPENAI_API_KEY=sk-...
 
 ## Add a free Scorecard key (both paths)
 
-Required for reliable school discovery. Add to `.env`:
+Without a key, discovery falls back to a shared demo key that is heavily rate-limited — broad queries may return few or no results. A free personal key takes 30 seconds to get:
 
 ```bash
 SCORECARD_API_KEY=your_key_from_api.data.gov
@@ -338,7 +367,7 @@ All paths are under `students/<name>/`:
 | --- | --- |
 | [`docs/Quickstart-free.md`](docs/Quickstart-free.md) | Free path — full setup walkthrough |
 | [`docs/Quickstart-pro.md`](docs/Quickstart-pro.md) | Pro path — full setup walkthrough |
-| [`docs/TECHNICAL.md`](docs/TECHNICAL.md) | Developers — pipeline, data model, module reference |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Developers — pipeline, data model, module reference, architecture diagram |
 | [`docs/PROFILE_AND_CONFIG.md`](docs/PROFILE_AND_CONFIG.md) | Excel profile fields + config schema |
 | [`docs/RESEARCH_AGENT.md`](docs/RESEARCH_AGENT.md) | Cache editors — scope commands, validation gate |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contributors |

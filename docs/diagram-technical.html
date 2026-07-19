@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Compass — Technical Architecture</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: linear-gradient(150deg, #f0f9ff 0%, #e0f2fe 60%, #f0fdf4 100%);
+      min-height: 100vh;
+      padding: 2rem 1.5rem 3rem;
+      color: #0f172a;
+    }
+
+    .page-header {
+      max-width: 1200px;
+      margin: 0 auto 1.75rem;
+    }
+    .page-header h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.02em;
+    }
+    .page-header p { color: #475569; font-size: 0.95rem; }
+
+    /* ── Side-by-side pipeline table ─────────────────── */
+    .pipeline-section {
+      max-width: 1200px;
+      margin: 0 auto 1.75rem;
+    }
+    .pipeline-section h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    .pipeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+
+    .pipeline-table thead th {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #64748b;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    .pipeline-table thead th:first-child { width: 160px; }
+    .pipeline-table thead th:nth-child(2) { width: 50%; }
+
+    .pipeline-table tbody tr {
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.15s;
+    }
+    .pipeline-table tbody tr:last-child { border-bottom: none; }
+    .pipeline-table tbody tr:hover { background: #f8fafc; }
+
+    .pipeline-table td {
+      padding: 1rem 1.25rem;
+      vertical-align: top;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: #374151;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: #0f172a;
+    }
+    .step-num {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .td-plain { color: #1e293b; }
+    .td-tech  { color: #374151; font-size: 0.845rem; }
+
+    code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: #f1f5f9;
+      padding: 0.1em 0.38em;
+      border-radius: 4px;
+      font-size: 0.8em;
+      color: #0f172a;
+    }
+
+    .llm-tag {
+      display: inline-block;
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      color: #92400e;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.1em 0.45em;
+      border-radius: 99px;
+      margin-left: 0.3rem;
+      vertical-align: middle;
+    }
+    .skip-note {
+      display: block;
+      margin-top: 0.35rem;
+      color: #78716c;
+      font-style: italic;
+      font-size: 0.8rem;
+    }
+
+    /* step colours */
+    .s1 .step-num { background: #dbeafe; color: #1d4ed8; }
+    .s2 .step-num { background: #ede9fe; color: #6d28d9; }
+    .s3 .step-num { background: #fef3c7; color: #b45309; }
+    .s4 .step-num { background: #dcfce7; color: #15803d; }
+    .s5 .step-num { background: #fce7f3; color: #be185d; }
+
+    /* ── Diagram card ────────────────────────────────── */
+    .diagram-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+      padding: 2rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto 1.25rem;
+      overflow-x: auto;
+    }
+    .diagram-card h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #64748b;
+      margin-bottom: 1.25rem;
+    }
+    .mermaid { display: flex; justify-content: center; }
+
+    /* ── Legend + LLM cards ──────────────────────────── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto 1.25rem;
+    }
+    @media (max-width: 680px) { .info-grid { grid-template-columns: 1fr; } }
+
+    .info-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .info-card h3 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #94a3b8;
+      margin-bottom: 0.85rem;
+    }
+    .legend-items { display: flex; flex-direction: column; gap: 0.55rem; }
+    .legend-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.855rem; color: #374151;
+    }
+    .legend-chip {
+      width: 14px; height: 14px; border-radius: 4px; border: 2px solid; flex-shrink: 0;
+    }
+    .chip-input  { background: #dbeafe; border-color: #3b82f6; }
+    .chip-llm    { background: #fef3c7; border-color: #f59e0b; }
+    .chip-python { background: #dcfce7; border-color: #22c55e; }
+    .chip-api    { background: #ede9fe; border-color: #8b5cf6; }
+    .chip-cache  { background: #f3f4f6; border-color: #6b7280; }
+    .chip-output { background: #fce7f3; border-color: #ec4899; }
+
+    .llm-points { display: flex; flex-direction: column; gap: 0.7rem; }
+    .llm-point {
+      padding: 0.65rem 0.9rem;
+      background: #fffbeb;
+      border-left: 3px solid #f59e0b;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.845rem; color: #374151; line-height: 1.45;
+    }
+    .llm-point strong {
+      display: block; color: #92400e; margin-bottom: 0.2rem; font-size: 0.82rem;
+    }
+    .llm-point .llm-skip {
+      display: block; margin-top: 0.25rem; color: #78716c;
+      font-style: italic; font-size: 0.8rem;
+    }
+
+    /* ── Footer principle ────────────────────────────── */
+    .principle-card {
+      background: #0f172a; color: #cbd5e1;
+      border-radius: 12px; padding: 1rem 1.5rem;
+      max-width: 1200px; margin: 0 auto;
+      font-size: 0.875rem; text-align: center; line-height: 1.6;
+    }
+    .principle-card em { color: #67e8f9; font-style: italic; font-weight: 600; }
+    .principle-card .sub {
+      display: block; margin-top: 0.3rem; color: #64748b; font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>College Compass — How it works</h1>
+    <p>Plain-English explanation alongside the technical details for each pipeline step</p>
+  </div>
+
+  <!-- ── Side-by-side pipeline table ───────────────── -->
+  <div class="pipeline-section">
+    <h2>Pipeline at a glance</h2>
+    <table class="pipeline-table">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>In plain English</th>
+          <th>What's happening technically</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="s1">
+          <td>
+            <div class="step-badge">
+              <span class="step-num">1</span>
+              Read your profile
+            </div>
+          </td>
+          <td class="td-plain">
+            You fill in an Excel sheet with GPA, test scores, budget, state, and major.
+            Optionally drop in a transcript or resume PDF — the tool reads them and fills any gaps you left blank.
+          </td>
+          <td class="td-tech">
+            <code>load_profile.py</code> reads the Excel.
+            If PDFs or docs exist in <code>input/</code>, <code>extract_student_docs.py</code>
+            runs an LLM <span class="llm-tag">🤖 LLM</span> to extract fields like GPA, courses, and activities into any blank cells.
+            <span class="skip-note">Excel values always win. Skipped entirely if no docs are present.</span>
+          </td>
+        </tr>
+
+        <tr class="s2">
+          <td>
+            <div class="step-badge">
+              <span class="step-num">2</span>
+              Find matching schools
+            </div>
+          </td>
+          <td class="td-plain">
+            The tool searches a free government database of thousands of colleges, filtered by your state, budget, and major.
+            Any schools you already listed are always included.
+            Write a sentence about what you're looking for ("strong engineering schools in the Midwest") and it adds suggestions automatically.
+          </td>
+          <td class="td-tech">
+            <code>discover_colleges.py</code> queries the College Scorecard API and saves results to <code>data/colleges/catalog.json</code>.
+            <code>llm_discover.py</code> <span class="llm-tag">🤖 LLM</span> turns the <code>any_other_preference</code> free-text field into school names.
+            <span class="skip-note">Skipped if any_other_preference is blank.</span>
+          </td>
+        </tr>
+
+        <tr class="s3">
+          <td>
+            <div class="step-badge">
+              <span class="step-num">3</span>
+              Research each school
+            </div>
+          </td>
+          <td class="td-plain">
+            For schools the tool hasn't seen before, it visits each school's admissions website and pulls out key numbers —
+            test score ranges, acceptance rates, application deadlines.
+            This is saved locally so it never has to do it again.
+          </td>
+          <td class="td-tech">
+            <code>auto_research_colleges.py</code> fetches each college's admissions page and passes it to an LLM
+            <span class="llm-tag">🤖 LLM</span> to extract mid-50% GPA/SAT/ACT bands, acceptance rates, and deadlines
+            into <code>data/college_research_cache.json</code>.
+            <span class="skip-note">Schools already in the cache are skipped entirely. Cache is shared across all students.</span>
+          </td>
+        </tr>
+
+        <tr class="s4">
+          <td>
+            <div class="step-badge">
+              <span class="step-num">4</span>
+              Classify each school
+            </div>
+          </td>
+          <td class="td-plain">
+            Pure math — no AI.
+            Your GPA and test scores are compared to each school's admit profile.
+            Schools are sorted into Safety, Target, or Reach based on how your numbers compare to their ranges and acceptance rates.
+          </td>
+          <td class="td-tech">
+            <code>college_finder.py</code> runs deterministic Python rules against cache data.
+            <code>acceptance_data.py</code> resolves accept rates (cache-first).
+            <code>program_admit.py</code> evaluates whether the student meets program-specific requirements.
+            No LLM involved.
+          </td>
+        </tr>
+
+        <tr class="s5">
+          <td>
+            <div class="step-badge">
+              <span class="step-num">5</span>
+              Generate outputs
+            </div>
+          </td>
+          <td class="td-plain">
+            Two files land in your output folder: a 27-column Excel spreadsheet and a printable gap analysis report.
+            Open both and review your list.
+          </td>
+          <td class="td-tech">
+            <code>build_selection_sheet.py</code> writes the Excel (rankings, tuition, net price, deadlines, fit).
+            <code>build_gap_analysis.py</code> produces the HTML gap report.
+            Both are pure Python — no LLM involved.
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Architecture diagram ───────────────────────── -->
+  <div class="diagram-card">
+    <h2>Architecture diagram</h2>
+    <pre class="mermaid">
+flowchart TD
+    classDef input  fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    classDef llm    fill:#fef3c7,stroke:#f59e0b,color:#78350f
+    classDef python fill:#dcfce7,stroke:#22c55e,color:#14532d
+    classDef api    fill:#ede9fe,stroke:#8b5cf6,color:#4c1d95
+    classDef cache  fill:#f3f4f6,stroke:#6b7280,color:#374151
+    classDef output fill:#fce7f3,stroke:#ec4899,color:#831843
+
+    XLS["📊 student profile input.xlsx
+    students/name/input/"]:::input
+
+    DOCS["📄 transcript.pdf · resume.docx · *.txt
+    optional — any filename works"]:::input
+
+    EXT["🤖 extract_student_docs.py
+    Reads docs → fills blank profile fields via LLM
+    Skipped entirely if no docs in input/"]:::llm
+
+    SC["🔌 College Scorecard API
+    free gov API — api.data.gov"]:::api
+
+    DISC["discover_colleges.py
+    Filters by state, budget, major"]:::python
+
+    LLD["🤖 llm_discover.py
+    Turns any_other_preference text into school names
+    Skipped if field is blank"]:::llm
+
+    CAT["📁 data/colleges/catalog.json
+    Generated school list for this student"]:::cache
+
+    WEB["🌐 College admissions pages
+    fetched per school"]:::api
+
+    RES["🤖 auto_research_colleges.py
+    Fetches admissions pages · LLM extracts
+    mid-50% bands · accept rates · deadlines
+    Skipped for schools already in cache"]:::llm
+
+    CACHE["🗄️ data/college_research_cache.json
+    Shared cache — single source of truth
+    Schools never re-fetched once cached"]:::cache
+
+    subgraph MATCHER ["  Pure Python matcher — no LLM  "]
+        direction LR
+        CR["college_research.py
+        Loads cache fields
+        onto each school"]:::python
+        AD["acceptance_data.py
+        Cache-first
+        accept rates"]:::python
+        PA["program_admit.py
+        Admit type +
+        requirements"]:::python
+        CF["🎯 college_finder.py
+        Safety / Target / Reach classification"]:::python
+    end
+
+    BSS["build_selection_sheet.py"]:::python
+    BGA["build_gap_analysis.py"]:::python
+
+    OUT1["📈 FirstName - US College Selection.xlsx
+    27-column sheet · rankings · tuition · deadlines"]:::output
+
+    OUT2["📋 FirstName - College Prep Gap Analysis.html
+    Printable gap report — open in browser → Print → PDF"]:::output
+
+    DOCS -- "if docs present" --> EXT
+    EXT -- "fills blank fields" --> XLS
+    XLS --> DISC
+    SC --> DISC
+    DISC --> CAT
+    DISC --> LLD
+    LLD -- "adds suggested schools" --> CAT
+
+    CAT --> RES
+    WEB --> RES
+    RES --> CACHE
+    CAT -. "cached schools skip research" .-> CACHE
+
+    CACHE --> CR
+    XLS --> CF
+    CR --> CF
+    AD --> CF
+    PA --> CF
+
+    CF --> BSS
+    CF --> BGA
+    XLS --> BSS
+    BSS --> OUT1
+    BGA --> OUT2
+    </pre>
+  </div>
+
+  <!-- ── Legend + LLM explanation ──────────────────── -->
+  <div class="info-grid">
+
+    <div class="info-card">
+      <h3>Legend</h3>
+      <div class="legend-items">
+        <div class="legend-item"><div class="legend-chip chip-input"></div> Student inputs</div>
+        <div class="legend-item"><div class="legend-chip chip-llm"></div> 🤖 LLM-assisted (optional)</div>
+        <div class="legend-item"><div class="legend-chip chip-python"></div> Pure Python — deterministic</div>
+        <div class="legend-item"><div class="legend-chip chip-api"></div> External APIs / web fetch</div>
+        <div class="legend-item"><div class="legend-chip chip-cache"></div> Cache / generated data</div>
+        <div class="legend-item"><div class="legend-chip chip-output"></div> Final output files</div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Where LLM is used — 3 places only</h3>
+      <div class="llm-points">
+        <div class="llm-point">
+          <strong>① Document extraction — extract_student_docs.py</strong>
+          Reads unstructured PDF/DOCX files (transcript, resume) and fills any blank fields in the Excel profile — GPA, courses, activities, awards.
+          <span class="llm-skip">Skipped entirely if no docs are present in input/.</span>
+        </div>
+        <div class="llm-point">
+          <strong>② College auto-research — auto_research_colleges.py</strong>
+          Fetches each college's admissions page and asks the LLM to extract structured data — mid-50% bands, acceptance rates, deadlines — into the shared cache.
+          <span class="llm-skip">Each school is only researched once. Cached schools are never fetched again.</span>
+        </div>
+        <div class="llm-point">
+          <strong>③ School name suggestions — llm_discover.py</strong>
+          Turns a free-text preference (e.g. "strong engineering programs in the Midwest") into actual school names to add to the discovery pool.
+          <span class="llm-skip">Skipped if any_other_preference is blank.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="principle-card">
+    <em>"Python decides. Models draft. Humans validate."</em>
+    <span class="sub">Once the cache is warm and the profile is complete, the entire pipeline runs in pure Python with zero LLM calls.</span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
+        fontSize: '13px',
+        lineColor: '#94a3b8',
+        edgeLabelBackground: '#f8fafc',
+        clusterBkg: '#f0fdf4',
+        clusterBorder: '#86efac',
+      },
+      flowchart: { curve: 'basis', padding: 20, htmlLabels: false }
+    });
+  </script>
+</body>
+</html>

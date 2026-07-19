@@ -133,8 +133,28 @@ def _fetch_page(url: str) -> Optional[str]:
         return None
 
 
+def _lookup_school_url(school_name: str) -> Optional[str]:
+    """Look up a school's homepage URL via the College Scorecard API."""
+    try:
+        from scorecard_api import search_schools, parse_row
+        results = search_schools(name=school_name, per_page=3)
+        for row in results:
+            parsed = parse_row(row)
+            url = parsed.get("school_url", "").strip()
+            if url:
+                return url if url.startswith("http") else f"https://{url}"
+    except Exception:
+        pass
+    return None
+
+
 def _find_admissions_page(school_url: str, school_name: str) -> Optional[str]:
-    """Try common admissions URL patterns, return first that responds."""
+    """Try common admissions URL patterns, return first that responds.
+
+    If school_url is missing, search DuckDuckGo for the school's .edu homepage first.
+    """
+    if not school_url:
+        school_url = _lookup_school_url(school_name)
     if not school_url:
         return None
     base = school_url.rstrip("/")

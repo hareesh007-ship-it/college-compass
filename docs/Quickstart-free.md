@@ -11,7 +11,7 @@ Research assist runs locally via [Ollama](https://ollama.com/). No OpenAI or Ant
 **macOS / Linux:**
 
 ```bash
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python3 -m venv .venv
 source .venv/bin/activate
@@ -21,7 +21,7 @@ pip install -e ".[free]"
 **Windows (Command Prompt):**
 
 ```bat
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python -m venv .venv
 .venv\Scripts\activate
@@ -31,7 +31,7 @@ pip install -e ".[free]"
 **Windows (PowerShell):**
 
 ```powershell
-git clone <your-repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
@@ -71,7 +71,7 @@ OLLAMA_MODEL=qwen2.5:3b
 
 ## 3. Add a free Scorecard key (recommended)
 
-School discovery uses the College Scorecard API. Add a free key for reliable results:
+School discovery uses the College Scorecard API. Without a key it falls back to a shared demo key that is heavily rate-limited — broad discovery queries may return few or no results, or fail with HTTP 429 errors. A free personal key takes 30 seconds to get and removes that limit:
 
 ```bash
 cp .env.example .env

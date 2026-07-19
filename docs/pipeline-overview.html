@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>College Compass — How it works</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f8fafc;
+      padding: 2rem;
+      color: #0f172a;
+    }
+    h2 {
+      font-size: 0.75rem; color: #64748b; margin-bottom: 1.25rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 2.5rem 2rem 2rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+
+    /* ── Flow row ─────────────────────────────────── */
+    .flow {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      margin-bottom: 2rem;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 160px;
+      flex-shrink: 0;
+    }
+    .step-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .step-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+    .step-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.4rem;
+      line-height: 1.25;
+    }
+    .step-desc {
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.45;
+      margin-bottom: 0.6rem;
+    }
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.25rem;
+      padding-bottom: 5rem;
+      color: #cbd5e1;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Method tags ──────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      align-items: center;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 0.2em 0.55em;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .tag-llm {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fcd34d;
+    }
+    .tag-python {
+      background: #dcfce7;
+      color: #14532d;
+      border: 1px solid #86efac;
+    }
+    .tag-optional {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* ── Step colours ─────────────────────────────── */
+    .s1 .step-icon { background: #dbeafe; }
+    .s1 .step-num  { color: #3b82f6; }
+    .s2 .step-icon { background: #ede9fe; }
+    .s2 .step-num  { color: #8b5cf6; }
+    .s3 .step-icon { background: #fef3c7; }
+    .s3 .step-num  { color: #f59e0b; }
+    .s4 .step-icon { background: #dcfce7; }
+    .s4 .step-num  { color: #22c55e; }
+    .s5 .step-icon { background: #fce7f3; }
+    .s5 .step-num  { color: #ec4899; }
+
+    /* ── Divider ──────────────────────────────────── */
+    .divider {
+      border: none;
+      border-top: 1px solid #f1f5f9;
+      margin: 0 0 1.25rem;
+    }
+
+    /* ── Legend row ───────────────────────────────── */
+    .legend {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .legend-label {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-right: 0.25rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: #475569;
+    }
+
+    @media (max-width: 860px) {
+      .flow { flex-direction: column; align-items: center; gap: 0.5rem; }
+      .arrow { transform: rotate(90deg); padding: 0; margin: 0.25rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <h2>How it works</h2>
+  <div class="card">
+    <div class="flow">
+
+      <div class="step s1">
+        <div class="step-icon">📝</div>
+        <div class="step-num">Step 1</div>
+        <div class="step-title">Fill your profile</div>
+        <div class="step-desc">GPA, test scores, budget, state, major, and any schools you have in mind</div>
+        <div class="tags">
+          <span class="tag tag-llm">🤖 LLM — reads your docs</span>
+          <span class="tag tag-optional">optional if no PDFs</span>
+        </div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="step s2">
+        <div class="step-icon">🔍</div>
+        <div class="step-num">Step 2</div>
+        <div class="step-title">Find schools</div>
+        <div class="step-desc">Searches thousands of US colleges filtered to your situation</div>
+        <div class="tags">
+          <span class="tag tag-python">🐍 Python — Scorecard API</span>
+          <span class="tag tag-llm">🤖 LLM — school suggestions</span>
+          <span class="tag tag-optional">optional if no preference text</span>
+        </div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="step s3">
+        <div class="step-icon">🔬</div>
+        <div class="step-num">Step 3</div>
+        <div class="step-title">Research each school</div>
+        <div class="step-desc">Fetches test score ranges, acceptance rates, and deadlines automatically</div>
+        <div class="tags">
+          <span class="tag tag-llm">🤖 LLM — extracts admissions data</span>
+          <span class="tag tag-optional">skipped if already cached</span>
+        </div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="step s4">
+        <div class="step-icon">🎯</div>
+        <div class="step-num">Step 4</div>
+        <div class="step-title">Classify</div>
+        <div class="step-desc">Sorts every school into Safety, Target, or Reach based on your numbers</div>
+        <div class="tags">
+          <span class="tag tag-python">🐍 Python — pure math, no AI</span>
+        </div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="step s5">
+        <div class="step-icon">📊</div>
+        <div class="step-num">Step 5</div>
+        <div class="step-title">Get your results</div>
+        <div class="step-desc">27-column Excel sheet and a printable gap analysis report</div>
+        <div class="tags">
+          <span class="tag tag-python">🐍 Python — generates files</span>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="divider">
+
+    <div class="legend">
+      <span class="legend-label">Legend:</span>
+      <div class="legend-item">
+        <span class="tag tag-llm">🤖 LLM</span>
+        Reads unstructured text, extracts structured data
+      </div>
+      <div class="legend-item">
+        <span class="tag tag-python">🐍 Python</span>
+        Deterministic rules — same input always gives same output
+      </div>
+      <div class="legend-item">
+        <span class="tag tag-optional">optional</span>
+        Step is skipped when data is already available
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
