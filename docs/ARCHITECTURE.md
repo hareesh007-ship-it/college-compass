@@ -126,8 +126,7 @@ HS historical outcomes (`high_school_outcomes.json`) deferred — see [`ENHANCEM
 | `college_matches.json` | `college_finder.py` (refreshed by pipeline) | Full match report per college |
 | `college_matches.md` | `college_finder.py` | Human-readable match summary |
 | `{FirstName} - US College Selection.xlsx` | `build_selection_sheet.py` | One tab: `College Selection - {Major}` |
-| `{FirstName} - College Prep Gap Analysis.html` | `build_gap_analysis.py` | Printable HTML gap report (single-major run) |
-| `{FirstName} - College Prep Gap Analysis.html` | `build_gap_analysis.py` | Printable HTML gap report (open in browser → Print → PDF) |
+| `{FirstName} - College Prep Gap Analysis.html` | `build_gap_analysis.py` | Printable HTML gap report — open in browser → Print → PDF |
 | `logs/research_log.jsonl` | `run_log.py` | Pipeline run history (gitignored) |
 
 Output filenames are parameterized from the profile first name via `output_paths.py`.
@@ -175,8 +174,8 @@ flowchart TB
 
     subgraph outputs [Outputs]
         MJ[college_matches.json / .md]
-        SH[{FirstName} - US College Selection.xlsx]
-        GH[{FirstName} - College Prep Gap Analysis.html]
+        SH["FirstName - US College Selection.xlsx"]
+        GH["FirstName - College Prep Gap Analysis.html"]
     end
 
     P --> DI
