@@ -65,6 +65,7 @@ logs/
 # --- IDE ---
 .idea/
 .vscode/
+.cursor/
 
 # --- Jupyter ---
 .ipynb_checkpoints/

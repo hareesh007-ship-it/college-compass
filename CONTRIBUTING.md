@@ -19,7 +19,7 @@ Thank you for your interest in contributing. This document covers how the projec
 ## Getting started
 
 ```bash
-git clone <repo-url> college-compass
+git clone https://github.com/hareesh007-ship-it/college-compass college-compass
 cd college-compass
 bash install-pro.sh          # or install-free.sh
 
@@ -27,7 +27,7 @@ bash install-pro.sh          # or install-free.sh
 college-compass --student alex-sample run
 ```
 
-See [`README.md`](README.md) and [`docs/TECHNICAL.md`](docs/TECHNICAL.md) for architecture context.
+See [`README.md`](README.md) and [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for architecture context.
 
 ---
 
@@ -149,4 +149,4 @@ docs/<short-description>
 
 ## Questions
 
-Open a GitHub issue describing what you want to change or add. For cache research questions, see [`docs/RESEARCH_AGENT.md`](docs/RESEARCH_AGENT.md). For architecture questions, see [`docs/TECHNICAL.md`](docs/TECHNICAL.md).
+Open a GitHub issue describing what you want to change or add. For cache research questions, see [`docs/RESEARCH_AGENT.md`](docs/RESEARCH_AGENT.md). For architecture questions, see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).

@@ -296,7 +296,11 @@ Get a free key: [api.data.gov/signup](https://api.data.gov/signup/)
 
 The repo ships with a fictional student (`alex-sample`) so you can verify your install before entering real data.
 
-**Free path:**
+> **Pick one path only — Free OR Pro, not both.**
+
+---
+
+**Option A — Free path** (Ollama, no API key):
 
 Open **terminal 1** and keep it running:
 
@@ -310,11 +314,15 @@ Open **terminal 2** and run the pipeline:
 college-compass-free --student alex-sample run
 ```
 
-**Pro path:**
+---
+
+**Option B — Pro path** (OpenAI or Anthropic API key):
 
 ```bash
 college-compass-pro --student alex-sample run
 ```
+
+---
 
 **Output lands at:**
 

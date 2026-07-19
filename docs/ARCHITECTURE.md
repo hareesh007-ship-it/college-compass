@@ -82,6 +82,10 @@ flowchart TD
 
 **Legend:** 🤖 Yellow — LLM-assisted (optional) · Green — Pure Python · Purple — External APIs · Pink — Outputs
 
+For a richer interactive version with plain-English explanations side by side, open [`docs/diagram-technical.html`](diagram-technical.html) in your browser.
+
+![Architecture diagram](screenshots/architecture-diagram.png)
+
 ---
 
 ## 1. Overview
