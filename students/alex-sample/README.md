@@ -21,7 +21,7 @@ is represented here.
 From the repo root:
 
 ```bash
-college-finder --student alex-sample run
+college-compass --student alex-sample run
 ```
 
 Outputs appear in `students/alex-sample/output/`.
@@ -31,7 +31,7 @@ Outputs appear in `students/alex-sample/output/`.
 1. Copy this folder: `cp -r students/alex-sample students/<your-name>`
 2. Edit `students/<your-name>/input/student profile input.xlsx` with real data
 3. Optionally update `config/pro.json` (shared tool config — research backend, logging)
-4. Run: `college-finder --student <your-name> run`
+4. Run: `college-compass --student <your-name> run`
 
 Your outputs and catalog stay isolated inside your student folder.
 The shared research cache (`data/college_research_cache.json`) is reused

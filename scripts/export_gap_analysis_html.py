@@ -30,7 +30,7 @@ def main() -> int:
     matches_path = STUDENT_DATA / "college_matches.json"
     if not matches_path.is_file():
         print(f"Match report not found: {matches_path}")
-        print("Run college-finder run first.")
+        print("Run college-compass run first.")
         return 1
     with open(matches_path, encoding="utf-8") as f:
         report = json.load(f)

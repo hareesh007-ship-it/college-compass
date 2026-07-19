@@ -36,8 +36,8 @@ python3 research_assist/extract_college_draft.py --college "Carlson School of Ma
     --file data/carlson_admissions.txt
 
 # 4. Review the draft JSON, merge into cache manually, then validate
-college-finder --student <your-name> validate
-college-finder --student <your-name> run
+college-compass --student <your-name> validate
+college-compass --student <your-name> run
 ```
 
 ---
@@ -115,8 +115,8 @@ Fields not found in the source text are `null` — the model is instructed not t
 2. Run extract_college_draft.py — prints JSON draft to stdout
 3. Review every field — check source accuracy
 4. Paste the college block into `data/college_research_cache.json`
-5. `college-finder --student <name> validate`    ← required gate
-6. `college-finder --student <name> run`       ← regenerate outputs
+5. `college-compass --student <name> validate`    ← required gate
+6. `college-compass --student <name> run`       ← regenerate outputs
 ```
 
 ---

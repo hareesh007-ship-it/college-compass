@@ -72,6 +72,7 @@ class College:
     act_mid50_low: Optional[int] = None
     act_mid50_high: Optional[int] = None
     admit_stats_source: Optional[str] = None
+    test_optional: bool = False
 
 
 def mid50_median_float(low: float, high: float) -> float:
@@ -214,7 +215,7 @@ def tuition_for_student(college: College, home_state: str) -> int:
     return college.tuition_out_of_state or college.tuition_in_state or 0
 
 
-def passes_filters(college: College, profile: Dict[str, Any]) -> tuple[bool, List[str]]:
+def passes_filters(college: College, profile: Dict[str, Any], cat_meta: Optional[Dict[str, Any]] = None) -> tuple[bool, List[str]]:
     reasons: List[str] = []
     prefs = profile.get("preferences", {})
     surrounding = set(prefs.get("surrounding_states", []))
@@ -230,9 +231,16 @@ def passes_filters(college: College, profile: Dict[str, Any]) -> tuple[bool, Lis
 
     tuition = tuition_for_student(college, profile["state_of_residence"])
     budget = profile.get("budget_max_tuition_per_year", 999999)
-    if tuition > budget:
-        reasons.append(f"Tuition ${tuition:,} exceeds budget ${budget:,}")
-        # Still include as excluded-with-reason if user interested
+    avg_net = (cat_meta or {}).get("avg_net_price")
+    # Pass budget if sticker OR average net price is within budget
+    within_budget = tuition <= budget or (avg_net is not None and avg_net <= budget)
+    if not within_budget:
+        if avg_net is not None:
+            reasons.append(
+                f"Sticker ${tuition:,} and avg net price ${avg_net:,} both exceed budget ${budget:,}"
+            )
+        else:
+            reasons.append(f"Tuition ${tuition:,} exceeds budget ${budget:,}")
         interested = profile.get("schools_interested_in", [])
         if not any(college.name.split(" - ")[0] in i or college.name in i for i in interested):
             return False, reasons
@@ -382,7 +390,10 @@ def classify_fit(
     else:
         score -= 2
 
-    if sat_delta >= 80:
+    # Skip SAT scoring when school is test-optional and student has no scores submitted
+    if sat == 0 and college.test_optional:
+        pass  # neutral — don't penalise a missing score at a test-optional school
+    elif sat_delta >= 80:
         score += 2
     elif sat_delta >= -40:
         score += 1
@@ -413,6 +424,7 @@ def build_reasons(
     tuition: int,
     budget_ok: bool,
     stats: Optional[Dict[str, Any]] = None,
+    avg_net: Optional[int] = None,
 ) -> List[str]:
     gpa = profile["gpa_unweighted"]
     sat = effective_sat(profile)
@@ -463,8 +475,13 @@ def build_reasons(
     else:
         reasons.append(f"Out-of-state tuition ${tuition:,}/year.")
 
+    budget = profile.get("budget_max_tuition_per_year", 999999)
     if not budget_ok:
-        reasons.append(f"⚠ Over budget cap of ${profile['budget_max_tuition_per_year']:,}/year.")
+        reasons.append(f"⚠ Over budget cap of ${budget:,}/year (sticker and avg net price).")
+    elif tuition > budget and avg_net is not None and avg_net <= budget:
+        reasons.append(
+            f"Sticker ${tuition:,} over budget but avg net price ${avg_net:,} is within budget — included."
+        )
 
     if college.business_program_note:
         reasons.append(college.business_program_note)
@@ -475,6 +492,11 @@ def build_reasons(
             f"Weighted GPA {gpa_weighted} (+{gpa_weighted - gpa:.2f} above unweighted) — "
             "rigorous coursework counted in fit scoring."
         )
+
+    if college.test_optional and sat == 0:
+        reasons.append("Test-optional school — no test score submitted; SAT scoring skipped in fit calculation.")
+    elif college.test_optional:
+        reasons.append("Test-optional school — submitting scores is at your discretion.")
 
     if category == "Reach":
         reasons.append("Classified as reach: stats below average and/or highly selective.")
@@ -493,10 +515,19 @@ def match_colleges(profile: Dict[str, Any]) -> Dict[str, Any]:
 
     for raw_college in get_active_colleges():
         college = apply_to_college(raw_college)
-        ok, filter_notes = passes_filters(college, profile)
+        cat_meta = {}
+        try:
+            from college_catalog import catalog_entry_for
+
+            cat_meta = catalog_entry_for(college.name)
+        except Exception:
+            pass
+
+        ok, filter_notes = passes_filters(college, profile, cat_meta)
         tuition = tuition_for_student(college, profile["state_of_residence"])
         budget = profile.get("budget_max_tuition_per_year", 999999)
-        budget_ok = tuition <= budget
+        avg_net = cat_meta.get("avg_net_price")
+        budget_ok = tuition <= budget or (avg_net is not None and avg_net <= budget)
 
         rate_val, rate_label = rate_for_fit(college.name)
         if rate_val is None:
@@ -508,14 +539,6 @@ def match_colleges(profile: Dict[str, Any]) -> Dict[str, Any]:
         category = classify_fit(college, gpa, sat, rate, stats, gpa_weighted=gpa_weighted)
         program_admit = resolve_program_admit(college.name, profile, stats, sat, act)
         interested = matches_user_interest(college.name, profile.get("schools_interested_in", []))
-
-        cat_meta = {}
-        try:
-            from college_catalog import catalog_entry_for
-
-            cat_meta = catalog_entry_for(college.name)
-        except Exception:
-            pass
 
         entry = {
             "name": college.name,
@@ -539,6 +562,7 @@ def match_colleges(profile: Dict[str, Any]) -> Dict[str, Any]:
             "act_position": mid50_position(float(act), stats["act_mid50_low"], stats["act_mid50_high"], decimals=0),
             "acceptance_rate_used": rate,
             "acceptance_rate_label": rate_label,
+            "test_optional": college.test_optional,
             "category": category,
             "priority_interest": interested,
             "deadlines": {
@@ -547,7 +571,7 @@ def match_colleges(profile: Dict[str, Any]) -> Dict[str, Any]:
                 "regular": college.regular_deadline,
             },
             "early_decision_available": college.ed_available,
-            "reasons": build_reasons(college, profile, category, tuition, budget_ok, stats),
+            "reasons": build_reasons(college, profile, category, tuition, budget_ok, stats, avg_net),
             "source": college.source,
             "student_size": cat_meta.get("student_size"),
             "business_program_pct": cat_meta.get("business_program_pct"),

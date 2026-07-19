@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-college-finder-free — run the pipeline using Ollama (no API key needed).
+college-compass-free — run the pipeline using Ollama (no API key needed).
 
 Setup (one time):
     Install Ollama: https://ollama.com/download
@@ -8,8 +8,8 @@ Setup (one time):
     ollama serve                 # keep running in a separate terminal
 
 Then:
-    college-finder-free --student <name> run
-    college-finder-free --student <name> validate
+    college-compass-free --student <name> run
+    college-compass-free --student <name> validate
 """
 
 from __future__ import annotations
@@ -40,9 +40,9 @@ def main() -> None:
     _check_ollama()
 
     import os
-    os.environ["COLLEGE_FINDER_BACKEND"] = "local"
+    os.environ["COLLEGE_COMPASS_BACKEND"] = "local"
 
-    from college_finder_cli import main as cli_main
+    from college_compass_cli import main as cli_main
     cli_main()
 
 

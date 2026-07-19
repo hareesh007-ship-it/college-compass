@@ -1,6 +1,6 @@
 # College Research Agent Playbook
 
-**Project:** college-finder  
+**Project:** college-compass  
 **Audience:** Humans and Cursor AI agents  
 **Last updated:** 2026-06-27
 
@@ -32,7 +32,7 @@ This playbook prevents:
 | `research field: <schools> <field>` | One field across named schools (e.g. `research field: recommended deadlines`). Not a full refresh. |
 | `full refresh: all` | All catalog schools — **only when the user explicitly says this**. |
 
-**Current catalog:** run `college-finder run` and check `data/colleges/catalog.json` for the live school list (generated dynamically from the student profile + Scorecard API).
+**Current catalog:** run `college-compass run` and check `data/colleges/catalog.json` for the live school list (generated dynamically from the student profile + Scorecard API).
 
 ---
 
@@ -274,7 +274,7 @@ After a scoped research session, record what happened for audit:
 3. **Agents** should append a `research` event after merging cache data:
 
 ```bash
-cd ~/Documents/college-finder/scripts
+cd ~/Documents/college-compass/scripts
 python3 -c "
 from run_log import log_research
 log_research(
@@ -337,7 +337,7 @@ Tell the user:
 - Cache ↔ matcher college name alignment (warnings for mismatches)
 
 ```bash
-cd ~/Documents/college-finder
+cd ~/Documents/college-compass
 python3 scripts/validate_cache.py
 ```
 

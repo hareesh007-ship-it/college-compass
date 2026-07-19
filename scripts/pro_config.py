@@ -33,7 +33,7 @@ def load_pro_config() -> Dict[str, Any]:
     """Load config/pro.json merged over defaults. Missing file is OK.
 
     Backend resolution order (highest priority first):
-      1. COLLEGE_FINDER_BACKEND env var  — set by college-finder-free / college-finder-pro entry points
+      1. COLLEGE_COMPASS_BACKEND env var  — set by college-compass-free / college-compass-pro entry points
       2. config/pro.json research_backend field
       3. DEFAULT_PRO_CONFIG fallback (cursor)
     """
@@ -48,8 +48,8 @@ def load_pro_config() -> Dict[str, Any]:
                 user = {k: v for k, v in user.items() if k != "logging"}
             cfg.update(user)
 
-    # Env var override — used by college-finder-free and college-finder-pro entry points
-    env_backend = os.environ.get("COLLEGE_FINDER_BACKEND", "").strip().lower()
+    # Env var override — used by college-compass-free and college-compass-pro entry points
+    env_backend = os.environ.get("COLLEGE_COMPASS_BACKEND", "").strip().lower()
     if env_backend in VALID_BACKENDS:
         cfg["research_backend"] = env_backend
 

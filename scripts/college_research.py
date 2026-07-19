@@ -21,7 +21,7 @@ def load_cache(path: Path = CACHE_PATH) -> Dict[str, Any]:
         if not path.is_file():
             raise FileNotFoundError(
                 f"Research cache not found: {path}\n"
-                "Run: college-finder --student <name> run  (to build it)\n"
+                "Run: college-compass --student <name> run  (to build it)\n"
                 "Or:  cp data/college_research_cache.json.example data/college_research_cache.json"
             )
         with open(path, encoding="utf-8") as f:
@@ -240,5 +240,10 @@ def apply_to_college(college: Any) -> Any:
         kwargs["regular_deadline"] = deadlines["regular"]
     if "ed_available" in deadlines:
         kwargs["ed_available"] = deadlines["ed_available"]
+
+    admit_profile = entry.get("admit_profile", {})
+    notes_text = (admit_profile.get("program_admit_notes") or "").lower()
+    if admit_profile.get("test_optional") or "test-optional" in notes_text or "test optional" in notes_text:
+        kwargs["test_optional"] = True
 
     return replace(college, **kwargs) if kwargs else college

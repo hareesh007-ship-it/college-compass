@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# College Finder — Option B (Pro / BYO LLM) installer
+# College Compass — Option B (Pro / BYO LLM) installer
 # No Ollama, no model download. See docs/Quickstart-pro.md
 
 set -euo pipefail
@@ -13,7 +13,7 @@ die() {
   exit 1
 }
 
-echo "College Finder — Pro install (Option B)"
+echo "College Compass — Pro install (Option B)"
 echo "Repo: ${ROOT}"
 echo
 
@@ -69,11 +69,11 @@ echo "     Set SCORECARD_API_KEY (free: https://api.data.gov/signup/)"
 echo "     Optional: OPENAI_API_KEY / ANTHROPIC_API_KEY for LLM-assisted discovery"
 echo "  2. Try the sample student:"
 echo "       cd ${ROOT}"
-echo "       college-finder-pro --student alex-sample run"
+echo "       college-compass-pro --student alex-sample run"
 echo "  3. Add your own student:"
 echo "       cp -r students/alex-sample students/<your-name>"
 echo "       # edit students/<your-name>/input/student profile input.xlsx"
-echo "       college-finder-pro --student <your-name> run"
+echo "       college-compass-pro --student <your-name> run"
 echo
-echo "Research gaps in Cursor: college-finder-pro cursor-prompt"
+echo "Research gaps in Cursor: college-compass-pro cursor-prompt"
 echo "Docs: docs/Quickstart-pro.md"

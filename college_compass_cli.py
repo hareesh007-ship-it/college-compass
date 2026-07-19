@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Cross-platform CLI entry point for College Finder.
+Cross-platform CLI entry point for College Compass.
 
 All platforms (Windows / macOS / Linux) after `pip install -e .`:
-    college-finder-free --student <name> run
-    college-finder-pro  --student <name> run
+    college-compass-free --student <name> run
+    college-compass-pro  --student <name> run
 
 Or run directly with Python:
-    python college_finder_cli.py --student <name> <command>
+    python college_compass_cli.py --student <name> <command>
 
 Commands: run | validate | help
 """
@@ -94,24 +94,24 @@ def _cmd_cursor_prompt() -> None:
 
 def _print_usage() -> None:
     print(f"""\
-College Finder — Safety / Target / Reach matcher + selection sheet
+College Compass — Safety / Target / Reach matcher + selection sheet
 
 Usage:
-  college-finder [--student NAME] run              Full pipeline (discover → match → sheet)
-  college-finder [--student NAME] validate         Validate data/college_research_cache.json
-  college-finder cursor-prompt                     Print Cursor research chat starter
-  college-finder help                              Show this help
+  college-compass [--student NAME] run              Full pipeline (discover → match → sheet)
+  college-compass [--student NAME] validate         Validate data/college_research_cache.json
+  college-compass cursor-prompt                     Print Cursor research chat starter
+  college-compass help                              Show this help
 
 Student folders live under students/<name>/  (input/, data/, output/)
 Shared data (cache + rankings) stays in data/ at the repo root.
 
 Examples:
-  college-finder --student alex-sample run
-  college-finder --student <your-name> run
-  COLLEGE_FINDER_STUDENT=alex-sample college-finder run
+  college-compass --student alex-sample run
+  college-compass --student <your-name> run
+  COLLEGE_COMPASS_STUDENT=alex-sample college-compass run
 
 Windows:
-  python college_finder_cli.py --student alex-sample run
+  python college_compass_cli.py --student alex-sample run
 
 Repo:  {ROOT}
 Docs:  docs/Quickstart-pro.md  ·  docs/RESEARCH_AGENT.md
@@ -119,7 +119,7 @@ Docs:  docs/Quickstart-pro.md  ·  docs/RESEARCH_AGENT.md
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(prog="college-finder", add_help=False)
+    parser = argparse.ArgumentParser(prog="college-compass", add_help=False)
     parser.add_argument("--student", metavar="NAME",
                         help="Student folder name under students/")
     parser.add_argument("command", nargs="?", default="help")
@@ -127,7 +127,7 @@ def main() -> None:
     args, _ = parser.parse_known_args()
 
     if args.student:
-        os.environ["COLLEGE_FINDER_STUDENT"] = args.student
+        os.environ["COLLEGE_COMPASS_STUDENT"] = args.student
 
     cmd = args.command or "help"
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the full college finder pipeline (recommended single command)."""
+"""Run the full college compass pipeline (recommended single command)."""
 
 from _paths import load_env_file
 

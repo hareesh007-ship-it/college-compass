@@ -1,4 +1,4 @@
-# College Finder — Claude Code Context
+# College Compass — Claude Code Context
 
 Open-source Python CLI for US undergrad college admissions. Any family clones the repo, fills in a student Excel profile (and optionally drops in transcript/resume PDFs), runs one command, and gets a Safety/Target/Reach classification, a 26-column Excel selection sheet, and a printable gap analysis HTML.
 
@@ -14,7 +14,7 @@ The matcher is deterministic Python. LLMs are used in three places only:
 
 ---
 
-## Pipeline (what `college-finder run` does)
+## Pipeline (what `college-compass run` does)
 
 ```
 1. Load profile    Excel → profile dict
@@ -57,8 +57,8 @@ Read these files first:
 | `students/<name>/data/colleges/catalog.json` | Discovered schools for this student (generated) |
 | `config/pro.json` | Pro backend config (research_backend, logging) |
 | `.env` | API keys only — never commit |
-| `college-finder-free` / `college-finder-pro` | CLI entry points (installed via pip) |
-| `college_finder_cli.py` | Cross-platform CLI entry point |
+| `college-compass-free` / `college-compass-pro` | CLI entry points (installed via pip) |
+| `college_compass_cli.py` | Cross-platform CLI entry point |
 | `scripts/extract_student_docs.py` | PDF extraction — fills blank profile fields via LLM |
 | `scripts/auto_research_colleges.py` | Admissions page fetch + LLM extraction per school |
 | `scripts/run.py` / `scripts/pipeline.py` | Full pipeline entry |
@@ -84,8 +84,8 @@ data/
 
 Run any student:
 ```bash
-college-finder-free --student alex-sample run
-college-finder-pro  --student <your-name> run
+college-compass-free --student alex-sample run
+college-compass-pro  --student <your-name> run
 ```
 
 ---
@@ -109,8 +109,8 @@ Set `research_backend` in `config/pro.json`:
 
 After any cache edit:
 ```bash
-college-finder-free --student <your-name> validate
-college-finder-free --student <your-name> run
+college-compass-free --student <your-name> validate
+college-compass-free --student <your-name> run
 ```
 
 ---

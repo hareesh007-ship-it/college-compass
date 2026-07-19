@@ -1,4 +1,4 @@
-# College Finder
+# College Compass
 
 **A free, open-source tool that helps high school juniors and seniors — and their parents — find the right colleges.**
 
@@ -143,8 +143,8 @@ Uses [Ollama](https://ollama.com/) to auto-research schools locally. No OpenAI o
 **macOS / Linux:**
 
 ```bash
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[free]"
@@ -153,8 +153,8 @@ pip install -e ".[free]"
 **Windows (Command Prompt):**
 
 ```bat
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python -m venv .venv
 .venv\Scripts\activate
 pip install -e ".[free]"
@@ -163,8 +163,8 @@ pip install -e ".[free]"
 **Windows (PowerShell):**
 
 ```powershell
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 .venv\Scripts\Activate.ps1
@@ -188,8 +188,8 @@ Use your existing OpenAI or Anthropic subscription.
 **macOS / Linux:**
 
 ```bash
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[pro]"
@@ -198,8 +198,8 @@ pip install -e ".[pro]"
 **Windows (Command Prompt):**
 
 ```bat
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python -m venv .venv
 .venv\Scripts\activate
 pip install -e ".[pro]"
@@ -208,8 +208,8 @@ pip install -e ".[pro]"
 **Windows (PowerShell):**
 
 ```powershell
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 .venv\Scripts\Activate.ps1
@@ -253,13 +253,13 @@ The repo ships with a fictional student (`alex-sample`) so you can verify your i
 
 ```bash
 ollama serve                                          # terminal 1 — keep open
-college-finder-free --student alex-sample run        # terminal 2
+college-compass-free --student alex-sample run        # terminal 2
 ```
 
 **Pro path:**
 
 ```bash
-college-finder-pro --student alex-sample run
+college-compass-pro --student alex-sample run
 ```
 
 **Output lands at:**
@@ -282,8 +282,8 @@ See [`students/alex-sample/README.md`](students/alex-sample/README.md) for the s
 cp -r students/alex-sample students/<your-name>
 # edit students/<your-name>/input/student profile input.xlsx
 
-college-finder-free --student <your-name> run   # free path
-college-finder-pro  --student <your-name> run   # pro path
+college-compass-free --student <your-name> run   # free path
+college-compass-pro  --student <your-name> run   # pro path
 ```
 
 Add real student folders to `.gitignore` so personal data is never committed:
@@ -316,8 +316,8 @@ All paths are under `students/<name>/`:
 | `students/<name>/input/student profile input.xlsx` | Student profile |
 | `data/college_research_cache.json` | Shared research cache (rankings, tuition, mid-50%, deadlines) |
 | `.env` | API keys — never committed |
-| `college_finder_free.py` | Entry point for free path |
-| `college_finder_pro.py` | Entry point for pro path |
+| `college_compass_free.py` | Entry point for free path |
+| `college_compass_pro.py` | Entry point for pro path |
 
 ---
 

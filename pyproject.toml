@@ -3,7 +3,7 @@ requires = ["setuptools>=42"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "college-finder"
+name = "college-compass"
 version = "0.1.0"
 description = "Local Safety/Target/Reach matcher + selection sheet for US college admissions"
 requires-python = ">=3.9"
@@ -25,10 +25,10 @@ free = ["ollama>=0.4.0"]
 
 [project.scripts]
 # All three commands work on macOS, Linux, and Windows after `pip install -e .`
-college-finder      = "college_finder_cli:main"
-college-finder-free = "college_finder_free:main"
-college-finder-pro  = "college_finder_pro:main"
+college-compass      = "college_compass_cli:main"
+college-compass-free = "college_compass_free:main"
+college-compass-pro  = "college_compass_pro:main"
 
 [tool.setuptools]
 packages = []
-py-modules = ["college_finder_cli", "college_finder_free", "college_finder_pro"]
+py-modules = ["college_compass_cli", "college_compass_free", "college_compass_pro"]

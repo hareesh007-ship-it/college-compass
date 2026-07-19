@@ -3,13 +3,13 @@
 manual_cache_inject.py — Manual research data injection tool.
 
 Use this ONLY to correct or override auto-researched college data.
-The pipeline (college-finder run) populates the cache automatically.
+The pipeline (college-compass run) populates the cache automatically.
 This tool is for power users who need to fix a specific data point —
 e.g. a deadline changed, a ranking is stale, or a program rate is wrong.
 
 It never writes to the cache directly — output is draft JSON for human review.
 After reviewing, merge manually into data/college_research_cache.json and validate:
-    college-finder --student <name> validate
+    college-compass --student <name> validate
 
 Usage:
     # Pipe text from clipboard or a file
@@ -213,8 +213,8 @@ def main() -> None:
 
     print("\n[manual_cache_inject] DRAFT ONLY — not written to cache.", file=sys.stderr)
     print("[manual_cache_inject] Review output, merge manually into data/college_research_cache.json, then:", file=sys.stderr)
-    print("    college-finder --student <name> validate", file=sys.stderr)
-    print("    college-finder --student <name> run", file=sys.stderr)
+    print("    college-compass --student <name> validate", file=sys.stderr)
+    print("    college-compass --student <name> run", file=sys.stderr)
 
 
 if __name__ == "__main__":

@@ -1119,7 +1119,7 @@
         "backend": "web",
         "scope": "pipeline auto-research",
         "researched_at": "2026-06-28",
-        "scorecard_id": 201885,
+        "scorecard_id": 206604,
         "source_urls": [
           "https://www.usnews.com/best-colleges/the-university-of-akron-3123/overall-rankings"
         ]
@@ -2085,5 +2085,5 @@
       "admit_stats": {}
     }
   },
-  "last_updated": "2026-07-12"
+  "last_updated": "2026-07-19"
 }

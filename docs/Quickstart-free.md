@@ -11,8 +11,8 @@ Research assist runs locally via [Ollama](https://ollama.com/). No OpenAI or Ant
 **macOS / Linux:**
 
 ```bash
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[free]"
@@ -21,8 +21,8 @@ pip install -e ".[free]"
 **Windows (Command Prompt):**
 
 ```bat
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python -m venv .venv
 .venv\Scripts\activate
 pip install -e ".[free]"
@@ -31,8 +31,8 @@ pip install -e ".[free]"
 **Windows (PowerShell):**
 
 ```powershell
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 .venv\Scripts\Activate.ps1
@@ -94,7 +94,7 @@ ollama serve
 In a second terminal, run the pipeline:
 
 ```bash
-college-finder-free --student alex-sample run
+college-compass-free --student alex-sample run
 ```
 
 **Outputs:**
@@ -115,7 +115,7 @@ Open both files to confirm everything worked.
 cp -r students/alex-sample students/<your-name>
 # edit students/<your-name>/input/student profile input.xlsx
 
-college-finder-free --student <your-name> run
+college-compass-free --student <your-name> run
 ```
 
 Add real student folders to `.gitignore`:
@@ -153,8 +153,8 @@ python research_assist/manual_cache_inject.py --college "School Name"
 Then validate and re-run:
 
 ```bash
-college-finder-free --student <your-name> validate
-college-finder-free --student <your-name> run
+college-compass-free --student <your-name> validate
+college-compass-free --student <your-name> run
 ```
 
 Full docs: [`research_assist/README.md`](../research_assist/README.md)
@@ -176,7 +176,7 @@ Full docs: [`research_assist/README.md`](../research_assist/README.md)
 
 | Symptom | Fix |
 | --- | --- |
-| `ModuleNotFoundError: No module named 'college_finder_free'` | Venv not active — run `source .venv/bin/activate` (macOS/Linux) or `.venv\Scripts\activate` (Windows), then retry |
+| `ModuleNotFoundError: No module named 'college_compass_free'` | Venv not active — run `source .venv/bin/activate` (macOS/Linux) or `.venv\Scripts\activate` (Windows), then retry |
 | `No student selected` | Add `--student <name>` to the command |
 | `Ollama is not running` | Run `ollama serve` in a separate terminal |
 | HTTP 429 on discovery | Set `SCORECARD_API_KEY` in `.env` |

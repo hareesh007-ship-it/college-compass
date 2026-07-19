@@ -1,4 +1,4 @@
-# College Finder — Technical Reference
+# College Compass — Technical Reference
 
 **Audience:** Developers and technically curious users who want to understand how the pipeline works, how data flows through the system, and how to extend or adapt the tool.  
 **Last updated:** 2026-06-28
@@ -26,7 +26,7 @@ For the student profile schema, see [`PROFILE_AND_CONFIG.md`](PROFILE_AND_CONFIG
 
 ## 1. Architecture overview
 
-College Finder is a **deterministic Python pipeline**. It does not call LLMs or re-research schools on every run. Research lives in a JSON cache; matching and sheet generation are pure Python.
+College Compass is a **deterministic Python pipeline**. It does not call LLMs or re-research schools on every run. Research lives in a JSON cache; matching and sheet generation are pure Python.
 
 ```
 students/<name>/input/student profile input.xlsx
@@ -69,20 +69,20 @@ LLMs are used out-of-band to populate `data/college_research_cache.json`. Every 
 Path resolution is in `scripts/_paths.py`. Set the active student with:
 
 ```bash
-college-finder --student <name> run          # recommended
-export COLLEGE_FINDER_STUDENT=<name>         # shell default
-COLLEGE_FINDER_STUDENT_DIR=/abs/path/to/student  # absolute override
+college-compass --student <name> run          # recommended
+export COLLEGE_COMPASS_STUDENT=<name>         # shell default
+COLLEGE_COMPASS_STUDENT_DIR=/abs/path/to/student  # absolute override
 ```
 
 **Legacy fallback:** if no student is selected and `input/student profile input.xlsx` exists at the repo root, the pipeline uses the repo root as the student folder (backward compatibility only — do not use for new installs).
 
-**Windows:** `python college_finder_cli.py --student <name> run` (or `pip install -e .` then `college-finder --student <name> run`).
+**Windows:** `python college_compass_cli.py --student <name> run` (or `pip install -e .` then `college-compass --student <name> run`).
 
 ```
-college-finder/
-├── college_finder_cli.py           # cross-platform CLI (Windows, pip entry point)
-├── college_finder_free.py          # entry point: college-finder-free
-├── college_finder_pro.py           # entry point: college-finder-pro
+college-compass/
+├── college_compass_cli.py           # cross-platform CLI (Windows, pip entry point)
+├── college_compass_free.py          # entry point: college-compass-free
+├── college_compass_pro.py           # entry point: college-compass-pro
 ├── students/
 │   ├── alex-sample/                # fictional example — safe to run
 │   │   ├── input/                  # student profile input.xlsx
@@ -111,10 +111,10 @@ college-finder/
 
 | Command | What it does |
 |---------|-------------|
-| `college-finder --student <name> run` | Full pipeline for one student |
-| `college-finder --student <name> validate` | Cache validation only |
-| `college-finder cursor-prompt` | Print Cursor research starter |
-| `python college_finder_cli.py --student <name> run` | Same as above — Windows fallback |
+| `college-compass --student <name> run` | Full pipeline for one student |
+| `college-compass --student <name> validate` | Cache validation only |
+| `college-compass cursor-prompt` | Print Cursor research starter |
+| `python college_compass_cli.py --student <name> run` | Same as above — Windows fallback |
 | `python3 scripts/run.py` | Direct Python entry (requires student env var set) |
 
 ---
@@ -345,7 +345,7 @@ Before the matcher uses the cache, `validate_cache.py` checks:
 Run it after any manual edit:
 
 ```bash
-college-finder --student <name> validate
+college-compass --student <name> validate
 ```
 
 ### Adding research for a new school
@@ -371,8 +371,8 @@ Both tiers share the same Python pipeline. They differ only in the research back
 # Paste admissions page text, then:
 pbpaste | python3 research_assist/extract_college_draft.py --college "School Name"
 # → review draft, merge into data/college_research_cache.json
-college-finder --student <name> validate
-college-finder --student <name> run
+college-compass --student <name> validate
+college-compass --student <name> run
 ```
 
 The Ollama model runs locally. No API keys. No data leaves your machine.
@@ -382,7 +382,7 @@ The Ollama model runs locally. No API keys. No data leaves your machine.
 `llm_discover.py` can call OpenAI or Anthropic during school discovery when "Any other preference" is filled in the profile. Per-school deep research is done interactively via Cursor using [`RESEARCH_AGENT.md`](RESEARCH_AGENT.md).
 
 ```bash
-college-finder --student <name> cursor-prompt
+college-compass --student <name> cursor-prompt
 # → prints a scoped starter prompt for a Cursor chat
 ```
 
@@ -436,7 +436,7 @@ To add a new student:
 ```bash
 cp -r students/alex-sample students/<name>
 # edit students/<name>/input/student profile input.xlsx
-college-finder --student <name> run
+college-compass --student <name> run
 ```
 
 Real student folders should be gitignored — add a line to `.gitignore`:

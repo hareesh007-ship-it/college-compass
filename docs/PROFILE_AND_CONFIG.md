@@ -65,7 +65,7 @@ These do **not** change Safety/Target/Reach math today. They help LLM agents dra
 ### Regenerate outputs
 
 ```bash
-college-finder --student <name> run
+college-compass --student <name> run
 ```
 
 ---
@@ -123,9 +123,9 @@ With the default path, logs write to `students/<name>/data/logs/research_log.jso
 
 ### After cache edits
 
-1. Run `college-finder --student <name> validate`
+1. Run `college-compass --student <name> validate`
 2. Optionally append a `research` log entry via `scripts/run_log.py`
-3. Run `college-finder --student <name> run` if validation passed
+3. Run `college-compass --student <name> run` if validation passed
 
 ---
 

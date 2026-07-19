@@ -1,6 +1,6 @@
-# College Finder — Architecture
+# College Compass — Architecture
 
-**Project:** college-finder  
+**Project:** college-compass  
 **Last updated:** 2026-06-28  
 **Audience:** Developers, counselors, and AI agents continuing the project
 
@@ -10,7 +10,7 @@ This document describes the end-to-end pipeline: what reads what, what is hardco
 
 ## 1. Overview
 
-The college finder is a **deterministic Python pipeline**. It does not call LLMs or re-research colleges on each run. Research lives in `data/college_research_cache.json`; matching and sheet generation are pure Python.
+The college compass is a **deterministic Python pipeline**. It does not call LLMs or re-research colleges on each run. Research lives in `data/college_research_cache.json`; matching and sheet generation are pure Python.
 
 ```
 input/student profile input.xlsx
@@ -33,15 +33,15 @@ input/student profile input.xlsx
 **Run everything (recommended):**
 
 ```bash
-cd ~/Documents/college-finder
-college-finder run
+cd ~/Documents/college-compass
+college-compass run
 ```
 
 **After a manual cache edit:**
 
 ```bash
-college-finder validate
-college-finder run
+college-compass validate
+college-compass run
 ```
 
 **Legacy equivalents (same result):**
@@ -59,7 +59,7 @@ python3 scripts/validate_cache.py  # validate only
 
 | Path | Role |
 |------|------|
-| `college-finder` | CLI entry point — `run`, `validate`, `cursor-prompt`, `help` subcommands |
+| `college-compass` | CLI entry point — `run`, `validate`, `cursor-prompt`, `help` subcommands |
 | `scripts/run.py` | Direct Python entry point — calls `pipeline.run_pipeline()` |
 | `scripts/pipeline.py` | Orchestrates all stages: discover → cache sync → research → match → outputs |
 

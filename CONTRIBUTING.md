@@ -1,4 +1,4 @@
-# Contributing to College Finder
+# Contributing to College Compass
 
 Thank you for your interest in contributing. This document covers how the project works, what you can contribute, and how to submit changes safely.
 
@@ -19,12 +19,12 @@ Thank you for your interest in contributing. This document covers how the projec
 ## Getting started
 
 ```bash
-git clone <repo-url> college-finder
-cd college-finder
+git clone <repo-url> college-compass
+cd college-compass
 bash install-pro.sh          # or install-free.sh
 
 # Run the sample student to verify everything works
-college-finder --student alex-sample run
+college-compass --student alex-sample run
 ```
 
 See [`README.md`](README.md) and [`docs/TECHNICAL.md`](docs/TECHNICAL.md) for architecture context.
@@ -39,7 +39,7 @@ The research cache (`data/college_research_cache.json`) is the shared library of
 
 1. **Validate before committing.** Every cache edit must pass `validate_cache.py`:
    ```bash
-   college-finder --student alex-sample validate
+   college-compass --student alex-sample validate
    ```
    Do not submit a PR with cache changes that fail validation.
 
@@ -110,11 +110,11 @@ docs/<short-description>
 
 1. Run the sample student end-to-end and confirm it produces outputs:
    ```bash
-   college-finder --student alex-sample run
+   college-compass --student alex-sample run
    ```
 2. Run cache validation:
    ```bash
-   college-finder --student alex-sample validate
+   college-compass --student alex-sample validate
    ```
 3. If you changed matcher logic (`college_finder.py`, `program_admit.py`, `acceptance_data.py`): manually verify that Safety/Target/Reach categories are sensible for the sample student.
 4. If you changed `build_selection_sheet.py`: open the output XLSX and check that columns are in the right order and data looks correct.

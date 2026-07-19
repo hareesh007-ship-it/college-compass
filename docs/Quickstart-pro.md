@@ -11,8 +11,8 @@ Auto-research runs via your API key. No Ollama, no model download. Matcher and s
 **macOS / Linux:**
 
 ```bash
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[pro]"
@@ -21,8 +21,8 @@ pip install -e ".[pro]"
 **Windows (Command Prompt):**
 
 ```bat
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python -m venv .venv
 .venv\Scripts\activate
 pip install -e ".[pro]"
@@ -31,8 +31,8 @@ pip install -e ".[pro]"
 **Windows (PowerShell):**
 
 ```powershell
-git clone <your-repo-url> college-finder
-cd college-finder
+git clone <your-repo-url> college-compass
+cd college-compass
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 .venv\Scripts\Activate.ps1
@@ -81,7 +81,7 @@ Get a key: [api.data.gov/signup](https://api.data.gov/signup/)
 ## 4. Run the sample student
 
 ```bash
-college-finder-pro --student alex-sample run
+college-compass-pro --student alex-sample run
 ```
 
 **Outputs:**
@@ -102,7 +102,7 @@ Open both files to confirm everything worked.
 cp -r students/alex-sample students/<your-name>
 # edit students/<your-name>/input/student profile input.xlsx
 
-college-finder-pro --student <your-name> run
+college-compass-pro --student <your-name> run
 ```
 
 Add real student folders to `.gitignore`:
@@ -156,8 +156,8 @@ python research_assist/manual_cache_inject.py --college "School Name"
 Then validate and re-run:
 
 ```bash
-college-finder-pro --student <your-name> validate
-college-finder-pro --student <your-name> run
+college-compass-pro --student <your-name> validate
+college-compass-pro --student <your-name> run
 ```
 
 Full cache playbook: [`docs/RESEARCH_AGENT.md`](RESEARCH_AGENT.md)
@@ -180,7 +180,7 @@ No API keys or personal data are ever written to the log.
 
 | Symptom | Fix |
 | --- | --- |
-| `ModuleNotFoundError: No module named 'college_finder_pro'` | Venv not active — run `source .venv/bin/activate` (macOS/Linux) or `.venv\Scripts\activate` (Windows), then retry |
+| `ModuleNotFoundError: No module named 'college_compass_pro'` | Venv not active — run `source .venv/bin/activate` (macOS/Linux) or `.venv\Scripts\activate` (Windows), then retry |
 | `No student selected` | Add `--student <name>` to the command |
 | `No API key found` | Add `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` to `.env` |
 | HTTP 429 on discovery | Set `SCORECARD_API_KEY` in `.env` |

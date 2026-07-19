@@ -5,8 +5,8 @@ Student isolation
 Per-student paths (INPUT, CONFIG, OUTPUT, LOGS, COLLEGES_DIR) resolve under a
 *student root* directory.  Set one of these to select the active student:
 
-  COLLEGE_FINDER_STUDENT=sid          → <repo>/students/sid/
-  COLLEGE_FINDER_STUDENT_DIR=/abs/path → that absolute path
+  COLLEGE_COMPASS_STUDENT=sid          → <repo>/students/sid/
+  COLLEGE_COMPASS_STUDENT_DIR=/abs/path → that absolute path
 
 The shared data directory (DATA) always points to <repo>/data/ and is never
 per-student — the research cache and reference files are shared across all
@@ -24,10 +24,10 @@ DATA = ROOT / "data"
 
 def _resolve_student_root() -> Path:
     """Return the active student's root directory."""
-    abs_dir = os.environ.get("COLLEGE_FINDER_STUDENT_DIR", "").strip()
+    abs_dir = os.environ.get("COLLEGE_COMPASS_STUDENT_DIR", "").strip()
     if abs_dir:
         return Path(abs_dir)
-    name = os.environ.get("COLLEGE_FINDER_STUDENT", "").strip()
+    name = os.environ.get("COLLEGE_COMPASS_STUDENT", "").strip()
     if name:
         return ROOT / "students" / name
     # Legacy fallback: old flat layout (input/ at repo root).
@@ -35,9 +35,9 @@ def _resolve_student_root() -> Path:
         return ROOT
     raise EnvironmentError(
         "No student selected.\n"
-        "  Run:  college-finder-free --student <name> run\n"
-        "  Or:   college-finder-pro  --student <name> run\n"
-        "  Or:   export COLLEGE_FINDER_STUDENT=<name>\n"
+        "  Run:  college-compass-free --student <name> run\n"
+        "  Or:   college-compass-pro  --student <name> run\n"
+        "  Or:   export COLLEGE_COMPASS_STUDENT=<name>\n"
         "  Example student folder: students/alex-sample/"
     )
 

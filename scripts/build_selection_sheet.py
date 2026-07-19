@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build US College Selection spreadsheet (26-column Investment Insights layout).
+Build US College Selection spreadsheet (29-column Investment Insights layout).
 
 Outputs (per student profile):
   output/{FirstName} - US College Selection.xlsx
@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from _paths import OUTPUT
 from acceptance_data import display_pair
@@ -44,6 +44,8 @@ def sheet_columns(profile: Dict[str, Any]) -> List[str]:
         tuition_col,
         "Avg Net Price (Scorecard)",
         "Fit Category",
+        "Data Quality",
+        "Test Optional",
         "Program Admit Type",
         "Program Requirements",
         "Student Meets Program Req?",
@@ -68,6 +70,20 @@ def sheet_columns(profile: Dict[str, Any]) -> List[str]:
     ]
 
 # Video CS sheet used general/OOS columns — replaced by business rates in data/acceptance_rates.json
+
+
+def data_quality_label(entry: Dict[str, Any]) -> str:
+    """High / Medium / Low based on how complete the admit stats are."""
+    source = (entry.get("admit_stats_source") or "").lower()
+    gpa_has = entry.get("gpa_range_display") not in (None, "", "—")
+    sat_has = entry.get("sat_range_display") not in (None, "", "—")
+    act_has = entry.get("act_range_display") not in (None, "", "—")
+    bands = sum([gpa_has, sat_has, act_has])
+    if bands >= 2 and "point estimate" not in source:
+        return "High"
+    if bands >= 1 or ("published" in source and "partial" in source):
+        return "Medium"
+    return "Low"
 
 
 def fmt_pct(rate: Optional[float]) -> str:
@@ -113,7 +129,7 @@ def build_row(
     accept_general, accept_business, accept_source = display_pair(entry["name"])
     if not accept_general and not accept_business:
         accept_general = fmt_pct(entry.get("acceptance_rate_used"))
-        accept_source = "Fallback: college_finder estimate"
+        accept_source = "Fallback: college_compass estimate"
 
     dl = entry.get("deadlines", {})
     ed_binding = "Y" if dl.get("early_decision") and entry.get("early_decision_available") else "N"
@@ -140,6 +156,8 @@ def build_row(
         tuition_col: fmt_money(entry["tuition_estimate"]),
         "Avg Net Price (Scorecard)": fmt_money(entry["avg_net_price"]) if entry.get("avg_net_price") else "—",
         "Fit Category": entry.get("category") or ("Excluded" if entry.get("excluded") else ""),
+        "Data Quality": data_quality_label(entry),
+        "Test Optional": "Yes" if entry.get("test_optional") else "No",
         "Program Admit Type": entry.get("program_admit_type", "—"),
         "Program Requirements": entry.get("program_requirements", "—"),
         "Student Meets Program Req?": entry.get("student_meets_program_req", "—"),

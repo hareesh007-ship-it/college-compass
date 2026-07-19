@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-college-finder-pro — run the pipeline using an LLM API key (Anthropic or OpenAI).
+college-compass-pro — run the pipeline using an LLM API key (Anthropic or OpenAI).
 
 Setup (one time):
     Add your API key to .env at the repo root:
@@ -8,8 +8,8 @@ Setup (one time):
         OPENAI_API_KEY=sk-...           (alternative)
 
 Then:
-    college-finder-pro --student <name> run
-    college-finder-pro --student <name> validate
+    college-compass-pro --student <name> run
+    college-compass-pro --student <name> validate
 
 If both keys are present, Anthropic is used.
 """
@@ -40,10 +40,10 @@ def _load_env() -> None:
 def _pick_backend() -> str:
     _load_env()
     if os.environ.get("ANTHROPIC_API_KEY", "").strip():
-        print("[college-finder-pro] Using Anthropic backend")
+        print("[college-compass-pro] Using Anthropic backend")
         return "anthropic"
     if os.environ.get("OPENAI_API_KEY", "").strip():
-        print("[college-finder-pro] Using OpenAI backend")
+        print("[college-compass-pro] Using OpenAI backend")
         return "openai"
     print(
         "ERROR: No API key found.\n"
@@ -62,9 +62,9 @@ def _pick_backend() -> str:
 
 def main() -> None:
     backend = _pick_backend()
-    os.environ["COLLEGE_FINDER_BACKEND"] = backend
+    os.environ["COLLEGE_COMPASS_BACKEND"] = backend
 
-    from college_finder_cli import main as cli_main
+    from college_compass_cli import main as cli_main
     cli_main()
 
 
