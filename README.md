@@ -322,6 +322,8 @@ college-compass-free --student alex-sample run
 college-compass-pro --student alex-sample run
 ```
 
+> **Recommendation:** Try the free path first to see how the outputs look. If you like what you see and want stronger research results, sign up for an [Anthropic API account](https://console.anthropic.com) — you can load as little as $5 in credits, which might be enough to research a full college list for one student.
+
 ---
 
 **Output lands at:**
